@@ -6,7 +6,7 @@
     <data readOnly="true">
         <collection id="qcArgsesDc"
                     class="com.zk.nlqc.entitys.base.QcArgs"
-                    view="_local">
+                    view="qcArgs-workStation-view">
             <loader id="qcArgsesDl">
                 <query>
                     <![CDATA[select e from nlqc_QcArgs e]]>

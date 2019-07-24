@@ -7,27 +7,50 @@
         <instance id="workStationDc"
                   class="com.zk.nlqc.entitys.complex.WorkStation"
                   view="workStation-with-qcArgs-view">
-            <loader/>
+            <loader id="workStationDl"/>
+            <collection id="workStationQcArgsesDc" property="qcArgs"/>
         </instance>
     </data>
-    <dialogMode height="AUTO"
-                width="AUTO"
-                modal="true"
-                forceDialog="true"/>
-    <layout expand="editActions" spacing="true">
-        <form id="form" dataContainer="workStationDc">
-            <column width="300px">
-                <textField id="workStationNoField" property="workStationNo"/>
-                <textField id="workStationNameField" property="workStation"/>
-            </column>
-            <column width="300px">
-                <lookupField id="qctypeField" property="qctype"/>
-                <textField id="noteField" property="note"/>
-            </column>
-        </form>
-        <hbox id="editActions" spacing="true">
-            <button action="windowCommitAndClose"/>
-            <button action="windowClose"/>
-        </hbox>
+    <dialogMode height="100%"
+                width="100%"/>
+    <layout expand="groupBox" spacing="true" width="100%">
+        <groupBox id="groupBox" spacing="true" expand="editActions">
+            <form id="form" dataContainer="workStationDc" width="100%" align="MIDDLE_CENTER">
+                <column width="50%">
+                    <textField id="workStationNoField" property="workStationNo"/>
+                    <textField id="workStationNameField" property="workStation"/>
+                </column>
+                <column width="50%">
+                    <lookupField id="qctypeField" property="qctype"/>
+                    <textField id="noteField" property="note"/>
+                </column>
+            </form>
+            <groupBox spacing="true" caption="&#26816;&#27979;&#21442;&#25968;&#37197;&#32622;">
+                <groupTable id="groupTable" width="100%" dataContainer="workStationQcArgsesDc">
+                    <columns>
+                        <column id="qcArgsCode"/>
+                        <column id="qcArgsType"/>
+                        <column id="qcArgsNote"/>
+                        <column id="note"/>
+                    </columns>
+                    <actions>
+                        <action id="create" icon="CREATE_ACTION" type="create"/>
+                        <action id="remove" icon="REMOVE" type="remove"/>
+                        <action id="edit" icon="EDIT" type="edit"/>
+                        <action id="add" type="add"/>
+                        <action id="exclude" type="exclude"/>
+                    </actions>
+                    <buttonsPanel>
+                        <button action="groupTable.add"/>
+                        <button action="groupTable.edit"/>
+                        <button action="groupTable.exclude"/>
+                    </buttonsPanel>
+                </groupTable>
+            </groupBox>
+            <hbox id="editActions" spacing="true">
+                <button action="windowCommitAndClose"/>
+                <button action="windowClose"/>
+            </hbox>
+        </groupBox>
     </layout>
 </window>

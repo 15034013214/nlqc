@@ -6,10 +6,13 @@
         <item screen="nlqc_CarModel.browse"/>
         <item screen="nlqc_Device.browse"/>
         <item screen="nlqc_Material.browse"/>
+        <separator/>
         <item screen="nlqc_QcArgs.browse"/>
         <item screen="nlqc_Frequency.browse"/>
     </menu>
-    <menu id="qcConfig" insertAfter="base">
+    <menu id="qcConfig" insertAfter="base" icon="font-icon:COGS">
         <item screen="nlqc_WorkStation.browse"/>
+        <item screen="nlqc_QcCourse.browse"/>
+        <separator/>
     </menu>
 </menu-config>

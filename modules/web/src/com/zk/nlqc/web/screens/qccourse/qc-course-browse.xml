@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
         caption="msg://browseCaption"
-        focusComponent="workStationsTable"
-        messagesPack="com.zk.nlqc.web.screens.workstation">
+        focusComponent="qcCoursesTable"
+        messagesPack="com.zk.nlqc.web.screens.qccourse">
     <data readOnly="true">
-        <collection id="workStationsDc"
-                    class="com.zk.nlqc.entitys.complex.WorkStation"
-                    view="workStation-with-qcArgs-view">
-            <loader id="workStationsDl">
+        <collection id="qcCoursesDc"
+                    class="com.zk.nlqc.entitys.complex.QcCourse"
+                    view="qcCourse-with-workStation-view">
+            <loader id="qcCoursesDl">
                 <query>
-                    <![CDATA[select e from nlqc_WorkStation e]]>
+                    <![CDATA[select e from nlqc_QcCourse e]]>
                 </query>
             </loader>
         </collection>
     </data>
     <dialogMode height="600"
                 width="800"/>
-    <layout expand="workStationsTable"
+    <layout expand="qcCoursesTable"
             spacing="true">
         <filter id="filter"
-                applyTo="workStationsTable"
-                dataLoader="workStationsDl">
+                applyTo="qcCoursesTable"
+                dataLoader="qcCoursesDl">
             <properties include=".*"/>
         </filter>
-        <groupTable id="workStationsTable"
+        <groupTable id="qcCoursesTable"
                     width="100%"
-                    dataContainer="workStationsDc"
+                    dataContainer="qcCoursesDc"
                     multiselect="true">
             <actions>
                 <action id="create" type="create"/>
@@ -33,17 +33,16 @@
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
-                <column id="workStationNo"/>
-                <column id="workStation"/>
-                <column id="qctype"/>
+                <column id="qcCourseNo"/>
+                <column id="qcCourseName"/>
                 <column id="note"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="createBtn" action="workStationsTable.create"/>
-                <button id="editBtn" action="workStationsTable.edit"/>
-                <button id="removeBtn" action="workStationsTable.remove"/>
+                <button id="createBtn" action="qcCoursesTable.create"/>
+                <button id="editBtn" action="qcCoursesTable.edit"/>
+                <button id="removeBtn" action="qcCoursesTable.remove"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

@@ -6,7 +6,7 @@
     <data>
         <instance id="qcArgsDc"
                   class="com.zk.nlqc.entitys.base.QcArgs"
-                  view="_local">
+                  view="qcArgs-workStation-view">
             <loader/>
         </instance>
     </data>

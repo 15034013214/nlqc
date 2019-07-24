@@ -1,0 +1,11 @@
+@import "hover-defaults";
+@import "com.zk.nlqc/hover-ext-defaults";
+@import "app-components";
+@import "com.zk.nlqc/hover-ext";
+
+.hover {
+  // include auto-generated app components SCSS
+  @include app_components;
+
+  @include com_zk_nlqc-hover-ext;
+}

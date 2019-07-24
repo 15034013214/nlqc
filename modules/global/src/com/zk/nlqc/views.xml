@@ -4,6 +4,22 @@
     <view entity="nlqc_WorkStation" name="workStation-with-qcArgs-view" extends="_local">
         <property name="qcArgs" view="_minimal">
             <property name="qcArgsNote"/>
+            <property name="note"/>
+        </property>
+        <property name="qcCourse" view="_minimal">
+            <property name="qcCourseNo"/>
+            <property name="qcCourseName"/>
+            <property name="note"/>
+        </property>
+    </view>
+    <view entity="nlqc_QcArgs" name="qcArgs-workStation-view" extends="_local">
+        <property name="workStation" view="_minimal"/>
+    </view>
+    <view entity="nlqc_QcCourse" name="qcCourse-with-workStation-view" extends="_local">
+        <property name="workStation" view="_minimal">
+            <property name="qctype"/>
+            <property name="qcArgs" view="_minimal"/>
+            <property name="note"/>
         </property>
     </view>
 </views>

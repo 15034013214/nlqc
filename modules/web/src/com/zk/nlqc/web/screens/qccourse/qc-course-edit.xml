@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.zk.nlqc.web.screens.qccourse">
+    <data>
+        <instance id="qcCourseDc"
+                  class="com.zk.nlqc.entitys.complex.QcCourse"
+                  view="qcCourse-with-workStation-view">
+            <loader id="qcCourseDl"/>
+            <collection id="qcCourseWorkStationsDc" property="workStation"/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="groupBox" spacing="true">
+        <groupBox id="groupBox" spacing="true" expand="editActions">
+            <form id="form" dataContainer="qcCourseDc">
+                <column width="300px">
+                    <textField id="qcCourseNoField" property="qcCourseNo"/>
+                </column>
+                <column width="300px">
+                    <textField id="qcCourseNameField" property="qcCourseName"/>
+                </column>
+                <column width="300px">
+                    <textField id="noteField" property="note"/>
+                </column>
+            </form>
+            <groupBox spacing="true" caption="&#37197;&#32622;&#36136;&#26816;&#24037;&#20316;&#31449;">
+                <groupTable id="qcCourseWorkStationTable" width="100%" dataContainer="qcCourseWorkStationsDc">
+                    <columns>
+                        <column id="workStationNo"/>
+                        <column id="workStation"/>
+                        <column id="qctype"/>
+                        <column id="note"/>
+                    </columns>
+                    <actions>
+                        <action id="add" type="add"/>
+                        <action id="edit" type="edit"/>
+                        <action id="exclude" type="exclude"/>
+                    </actions>
+                    <buttonsPanel>
+                        <button action="qcCourseWorkStationTable.add"/>
+                        <button action="qcCourseWorkStationTable.edit"/>
+                        <button action="qcCourseWorkStationTable.exclude"/>
+                    </buttonsPanel>
+                </groupTable>
+            </groupBox>
+            <hbox id="editActions" spacing="true">
+                <button action="windowCommitAndClose"/>
+                <button action="windowClose"/>
+            </hbox>
+        </groupBox>
+    </layout>
+</window>

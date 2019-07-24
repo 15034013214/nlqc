@@ -25,7 +25,7 @@ public class QcCourse extends StandardEntity {
     protected String qcCourseName;
 
     @OnDeleteInverse(DeletePolicy.DENY)
-    @OnDelete(DeletePolicy.DENY)
+    @OnDelete(DeletePolicy.UNLINK)
     @OneToMany(mappedBy = "qcCourse")
     protected List<WorkStation> workStation;
 

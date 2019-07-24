@@ -17,7 +17,7 @@ public class QcArgs extends StandardEntity {
 
     @CaseConversion(type = ConversionType.LOWER)
     @NotNull
-    @Column(name = "QC_ARGS_CODE", nullable = false, unique = true)
+    @Column(name = "QC_ARGS_CODE", nullable = false)
     protected String qcArgsCode;
 
     @NotNull

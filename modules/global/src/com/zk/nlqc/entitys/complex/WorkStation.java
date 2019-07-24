@@ -12,14 +12,14 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
-@NamePattern("%s %s|workStationNo,workStationName")
+@NamePattern("%s %s|workStationNo,workStation")
 @Table(name = "NLQC_WORK_STATION")
 @Entity(name = "nlqc_WorkStation")
 public class WorkStation extends StandardEntity {
     private static final long serialVersionUID = -6465755325683951152L;
 
     @NotNull
-    @Column(name = "WORK_STATION_NO", nullable = false, unique = true)
+    @Column(name = "WORK_STATION_NO", nullable = false)
     protected String workStationNo;
 
     @Column(name = "WORK_STATION")
@@ -30,7 +30,7 @@ public class WorkStation extends StandardEntity {
     protected String qctype;
 
     @OnDeleteInverse(DeletePolicy.DENY)
-    @OnDelete(DeletePolicy.DENY)
+    @OnDelete(DeletePolicy.UNLINK)
     @OneToMany(mappedBy = "workStation")
     protected List<QcArgs> qcArgs;
 
