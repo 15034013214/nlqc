@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.zk.nlqc.web.screens.qcitem">
+    <data>
+        <instance id="qcItemDc"
+                  class="com.zk.nlqc.entitys.complex.QcItem"
+                  view="qcItem-with-all-view">
+            <loader/>
+        </instance>
+        <collection id="qcArgsesDc" class="com.zk.nlqc.entitys.base.QcArgs" view="_minimal">
+            <loader id="qcArgsesLc">
+                <query>
+                    <![CDATA[select e from nlqc_QcArgs e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="devicesDc" class="com.zk.nlqc.entitys.base.Device" view="_minimal">
+            <loader id="devicesLc">
+                <query>
+                    <![CDATA[select e from nlqc_Device e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="mateialsDc" class="com.zk.nlqc.entitys.base.Material" view="_minimal">
+            <loader id="mateialsLc">
+                <query>
+                    <![CDATA[select e from nlqc_Material e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="firstQcFrequenciesDc" class="com.zk.nlqc.entitys.base.Frequency" view="_minimal">
+            <loader id="firstQcFrequenciesLc">
+                <query>
+                    <![CDATA[select e from nlqc_Frequency e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="initiativeQcFrequenciesDc" class="com.zk.nlqc.entitys.base.Frequency" view="_minimal">
+            <loader id="initiativeQcFrequenciesLc">
+                <query>
+                    <![CDATA[select e from nlqc_Frequency e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="finallyQcFrequenciesDc" class="com.zk.nlqc.entitys.base.Frequency" view="_minimal">
+            <loader id="finallyQcFrequenciesLc">
+                <query>
+                    <![CDATA[select e from nlqc_Frequency e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="roundsQcFrequenciesDc" class="com.zk.nlqc.entitys.base.Frequency" view="_minimal">
+            <loader id="roundsQcFrequenciesLc">
+                <query>
+                    <![CDATA[select e from nlqc_Frequency e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="groupBox" spacing="true">
+        <groupBox id="groupBox" spacing="true" expand="editActions">
+            <split orientation="horizontal" width="100%">
+                <scrollBox id="scrollBox" spacing="true">
+                    <form id="form" dataContainer="qcItemDc">
+                        <column width="250px">
+                            <textField id="qcItemNoField" property="qcItemNo"/>
+                            <textField id="qcItemNameField" property="qcItemName"/>
+                            <lookupPickerField id="qcArgsField" optionsContainer="qcArgsesDc" property="qcArgs">
+                                <actions>
+                                    <action id="lookup" type="picker_lookup"/>
+                                    <action id="open" type="picker_open"/>
+                                    <action id="clear" type="picker_clear"/>
+                                </actions>
+                            </lookupPickerField>
+                            <lookupPickerField id="deviceField" optionsContainer="devicesDc" property="device">
+                                <actions>
+                                    <action id="lookup" type="picker_lookup"/>
+                                    <action id="open" type="picker_open"/>
+                                    <action id="clear" type="picker_clear"/>
+                                </actions>
+                            </lookupPickerField>
+                            <lookupPickerField id="mateialField" optionsContainer="mateialsDc" property="mateial">
+                                <actions>
+                                    <action id="lookup" type="picker_lookup"/>
+                                    <action id="open" type="picker_open"/>
+                                    <action id="clear" type="picker_clear"/>
+                                </actions>
+                            </lookupPickerField>
+                            <textField id="unitField" property="unit"/>
+                            <textField id="normValueField" property="normValue"/>
+                            <textField id="upValueField" property="upValue"/>
+                            <textField id="belowValueField" property="belowValue"/>
+                        </column>
+                        <column width="250px">
+                            <checkBox id="isFirstQcField" property="isFirstQc"/>
+                            <lookupPickerField id="firstQcFrequencyField" optionsContainer="firstQcFrequenciesDc"
+                                               property="firstQcFrequency">
+                                <actions>
+                                    <action id="lookup" type="picker_lookup"/>
+                                    <action id="open" type="picker_open"/>
+                                    <action id="clear" type="picker_clear"/>
+                                </actions>
+                            </lookupPickerField>
+                            <checkBox id="isInitiativeQcField" property="isInitiativeQc"/>
+                            <lookupPickerField id="initiativeQcFrequencyField" optionsContainer="initiativeQcFrequenciesDc"
+                                               property="initiativeQcFrequency">
+                                <actions>
+                                    <action id="lookup" type="picker_lookup"/>
+                                    <action id="open" type="picker_open"/>
+                                    <action id="clear" type="picker_clear"/>
+                                </actions>
+                            </lookupPickerField>
+                            <checkBox id="isFinallyQcField" property="isFinallyQc"/>
+                            <lookupPickerField id="finallyQcFrequencyField" optionsContainer="finallyQcFrequenciesDc"
+                                               property="finallyQcFrequency">
+                                <actions>
+                                    <action id="lookup" type="picker_lookup"/>
+                                    <action id="open" type="picker_open"/>
+                                    <action id="clear" type="picker_clear"/>
+                                </actions>
+                            </lookupPickerField>
+                            <checkBox id="isRoundsQcField" property="isRoundsQc"/>
+                            <lookupPickerField id="roundsQcFrequencyField" optionsContainer="roundsQcFrequenciesDc"
+                                               property="roundsQcFrequency">
+                                <actions>
+                                    <action id="lookup" type="picker_lookup"/>
+                                    <action id="open" type="picker_open"/>
+                                    <action id="clear" type="picker_clear"/>
+                                </actions>
+                            </lookupPickerField>
+                            <checkBox id="isControlItemField" property="isControlItem"/>
+        <!--                    <textField id="pictureField" property="picture"/>-->
+                        </column>
+                    </form>
+                </scrollBox>
+                <groupBox caption="&#20316;&#19994;&#25351;&#23548;&#22270;" height="100%">
+                    <image height="100%" width="100%"/>
+                </groupBox>
+            </split>
+            <hbox id="editActions" spacing="true">
+                <button action="windowCommitAndClose"/>
+                <button action="windowClose"/>
+            </hbox>
+        </groupBox>
+    </layout>
+</window>

@@ -1,5 +1,6 @@
 package com.zk.nlqc.entitys.base;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
 import javax.persistence.Column;
@@ -7,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+@NamePattern("%s %s|carModelNo,carModelName")
 @Table(name = "NLQC_CAR_MODEL")
 @Entity(name = "nlqc_CarModel")
 public class CarModel extends StandardEntity {

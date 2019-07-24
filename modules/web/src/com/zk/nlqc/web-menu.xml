@@ -14,5 +14,7 @@
         <item screen="nlqc_WorkStation.browse"/>
         <item screen="nlqc_QcCourse.browse"/>
         <separator/>
+        <item screen="nlqc_QcItem.browse"/>
+        <item screen="nlqc_QcFlow.browse"/>
     </menu>
 </menu-config>

@@ -22,4 +22,81 @@
             <property name="note"/>
         </property>
     </view>
+    <view entity="nlqc_QcItem" name="qcItem-with-all-view" extends="_local">
+        <property name="qcArgs" view="_minimal"/>
+        <property name="device" view="_minimal"/>
+        <property name="mateial" view="_minimal"/>
+        <property name="firstQcFrequency" view="_minimal">
+            <property name="quantity"/>
+            <property name="unit"/>
+            <property name="isInfinityBig"/>
+        </property>
+        <property name="initiativeQcFrequency" view="_minimal">
+            <property name="quantity"/>
+            <property name="unit"/>
+            <property name="isInfinityBig"/>
+        </property>
+        <property name="finallyQcFrequency" view="_minimal">
+            <property name="quantity"/>
+            <property name="unit"/>
+            <property name="isInfinityBig"/>
+        </property>
+        <property name="roundsQcFrequency" view="_minimal">
+            <property name="quantity"/>
+            <property name="unit"/>
+            <property name="isInfinityBig"/>
+        </property>
+        <property name="qcFlow" view="_minimal"/>
+    </view>
+    <view entity="nlqc_QcFlow" name="qcFlow-with-all-view" extends="_local">
+        <property name="carModel" view="_minimal">
+            <property name="carModelNo"/>
+            <property name="carModelName"/>
+        </property>
+        <property name="qcCourse" view="_minimal">
+            <property name="qcCourseNo"/>
+            <property name="qcCourseName"/>
+            <property name="workStation" view="_minimal">
+                <property name="qctype"/>
+                <property name="qcArgs" view="_minimal"/>
+            </property>
+            <property name="note"/>
+        </property>
+        <property name="workStation" view="_minimal"/>
+        <property name="qcItem" view="_minimal">
+            <property name="qcArgs" view="_minimal"/>
+            <property name="device" view="_minimal"/>
+            <property name="mateial" view="_minimal"/>
+            <property name="unit"/>
+            <property name="normValue"/>
+            <property name="upValue"/>
+            <property name="belowValue"/>
+            <property name="isFirstQc"/>
+            <property name="firstQcFrequency" view="_minimal">
+                <property name="quantity"/>
+                <property name="unit"/>
+                <property name="isInfinityBig"/>
+            </property>
+            <property name="isInitiativeQc"/>
+            <property name="initiativeQcFrequency" view="_minimal">
+                <property name="quantity"/>
+                <property name="unit"/>
+                <property name="isInfinityBig"/>
+            </property>
+            <property name="isFinallyQc"/>
+            <property name="finallyQcFrequency" view="_minimal">
+                <property name="quantity"/>
+                <property name="unit"/>
+                <property name="isInfinityBig"/>
+            </property>
+            <property name="isRoundsQc"/>
+            <property name="roundsQcFrequency" view="_minimal">
+                <property name="quantity"/>
+                <property name="unit"/>
+                <property name="isInfinityBig"/>
+            </property>
+            <property name="isControlItem"/>
+            <property name="picture"/>
+        </property>
+    </view>
 </views>

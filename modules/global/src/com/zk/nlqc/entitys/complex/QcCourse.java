@@ -1,5 +1,6 @@
 package com.zk.nlqc.entitys.complex;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.OnDelete;
 import com.haulmont.cuba.core.entity.annotation.OnDeleteInverse;
@@ -12,6 +13,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
+@NamePattern("%s %s|qcCourseNo,qcCourseName")
 @Table(name = "NLQC_QC_COURSE")
 @Entity(name = "nlqc_QcCourse")
 public class QcCourse extends StandardEntity {

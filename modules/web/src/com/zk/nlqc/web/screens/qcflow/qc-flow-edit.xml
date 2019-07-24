@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.zk.nlqc.web.screens.qcflow">
+    <data>
+        <instance id="qcFlowDc"
+                  class="com.zk.nlqc.entitys.complex.QcFlow"
+                  view="qcFlow-with-all-view">
+            <loader id="qcFlowDl"/>
+            <collection id="qcFlowQcItemsDc" property="qcItem"/>
+        </instance>
+        <collection id="carModelsDc" class="com.zk.nlqc.entitys.base.CarModel" view="_minimal">
+            <loader id="carModelsLc">
+                <query>
+                    <![CDATA[select e from nlqc_CarModel e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="qcCoursesDc" class="com.zk.nlqc.entitys.complex.QcCourse" view="_minimal">
+            <loader id="qcCoursesLc">
+                <query>
+                    <![CDATA[select e from nlqc_QcCourse e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="workStationsDc" class="com.zk.nlqc.entitys.complex.WorkStation" view="_minimal">
+            <loader id="workStationsLc">
+                <query>
+                    <![CDATA[select e from nlqc_WorkStation e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="groupBox" spacing="true">
+        <groupBox id="groupBox" spacing="true" expand="editActions">
+            <form id="form" dataContainer="qcFlowDc">
+                <column width="250px">
+                    <lookupPickerField id="carModelField" optionsContainer="carModelsDc" property="carModel">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="open" type="picker_open"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </lookupPickerField>
+                </column>
+                <column width="250px">
+                    <lookupPickerField id="qcCourseField" optionsContainer="qcCoursesDc" property="qcCourse">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="open" type="picker_open"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </lookupPickerField>
+                </column>
+                <column width="250px">
+                    <lookupPickerField id="workStationField" optionsContainer="workStationsDc" property="workStation">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="open" type="picker_open"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </lookupPickerField>
+                </column>
+            </form>
+            <groupBox spacing="true" caption="&#36136;&#26816;&#39033;&#37197;&#32622;">
+                <groupTable id="qcFlowQcItemTable" width="100%" dataContainer="qcFlowQcItemsDc">
+                    <columns>
+                        <column id="qcItemNo"/>
+                        <column id="qcItemName"/>
+                        <column id="unit"/>
+                        <column id="normValue"/>
+                        <column id="upValue"/>
+                        <column id="belowValue"/>
+                        <column id="isFirstQc"/>
+                        <column id="isInitiativeQc"/>
+                        <column id="isFinallyQc"/>
+                        <column id="isRoundsQc"/>
+                        <column id="isControlItem"/>
+                        <column id="picture"/>
+                    </columns>
+                    <actions>
+                        <action id="add" type="add"/>
+                        <action id="edit" type="edit"/>
+                        <action id="exclude" type="exclude"/>
+                    </actions>
+                    <buttonsPanel>
+                        <button action="qcFlowQcItemTable.add"/>
+                        <button action="qcFlowQcItemTable.edit"/>
+                        <button action="qcFlowQcItemTable.exclude"/>
+                    </buttonsPanel>
+                </groupTable>
+            </groupBox>
+            <hbox id="editActions" spacing="true">
+                <button action="windowCommitAndClose"/>
+                <button action="windowClose"/>
+            </hbox>
+        </groupBox>
+    </layout>
+</window>

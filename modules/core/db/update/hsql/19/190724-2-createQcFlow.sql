@@ -1,0 +1,6 @@
+alter table NLQC_QC_FLOW add constraint FK_NLQC_QC_FLOW_ON_CAR_MODEL foreign key (CAR_MODEL_ID) references NLQC_CAR_MODEL(ID);
+alter table NLQC_QC_FLOW add constraint FK_NLQC_QC_FLOW_ON_QC_COURSE foreign key (QC_COURSE_ID) references NLQC_QC_COURSE(ID);
+alter table NLQC_QC_FLOW add constraint FK_NLQC_QC_FLOW_ON_WORK_STATION foreign key (WORK_STATION_ID) references NLQC_WORK_STATION(ID);
+create index IDX_NLQC_QC_FLOW_ON_CAR_MODEL on NLQC_QC_FLOW (CAR_MODEL_ID);
+create index IDX_NLQC_QC_FLOW_ON_QC_COURSE on NLQC_QC_FLOW (QC_COURSE_ID);
+create index IDX_NLQC_QC_FLOW_ON_WORK_STATION on NLQC_QC_FLOW (WORK_STATION_ID);

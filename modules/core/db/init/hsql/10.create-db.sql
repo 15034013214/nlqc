@@ -132,3 +132,56 @@ create table NLQC_CAR_MODEL (
     primary key (ID)
 )^
 -- end NLQC_CAR_MODEL
+-- begin NLQC_QC_ITEM
+create table NLQC_QC_ITEM (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    QC_ITEM_NO varchar(255) not null,
+    QC_ITEM_NAME varchar(255) not null,
+    QC_ARGS_ID varchar(36),
+    DEVICE_ID varchar(36),
+    MATEIAL_ID varchar(36),
+    UNIT varchar(255),
+    NORM_VALUE decimal(19, 2),
+    UP_VALUE decimal(19, 2),
+    BELOW_VALUE decimal(19, 2),
+    IS_FIRST_QC boolean,
+    FIRST_QC_FREQUENCY_ID varchar(36),
+    IS_INITIATIVE_QC boolean,
+    INITIATIVE_QC_FREQUENCY_ID varchar(36),
+    IS_FINALLY_QC boolean,
+    FINALLY_QC_FREQUENCY_ID varchar(36),
+    IS_ROUNDS_QC boolean,
+    ROUNDS_QC_FREQUENCY_ID varchar(36),
+    IS_CONTROL_ITEM boolean,
+    PICTURE bigint,
+    QC_FLOW_ID varchar(36),
+    --
+    primary key (ID)
+)^
+-- end NLQC_QC_ITEM
+-- begin NLQC_QC_FLOW
+create table NLQC_QC_FLOW (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    CAR_MODEL_ID varchar(36),
+    QC_COURSE_ID varchar(36),
+    WORK_STATION_ID varchar(36),
+    --
+    primary key (ID)
+)^
+-- end NLQC_QC_FLOW
