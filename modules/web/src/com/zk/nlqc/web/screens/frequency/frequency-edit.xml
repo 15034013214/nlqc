@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.zk.nlqc.web.screens.frequency">
+    <data>
+        <instance id="frequencyDc"
+                  class="com.zk.nlqc.entitys.base.Frequency"
+                  view="_local">
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="AUTO"
+                width="AUTO"
+                modal="true"
+                forceDialog="true"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="frequencyDc">
+            <column width="300px">
+                <textField id="quantityField" property="quantity"/>
+                <textField id="showTextField" property="showText"/>
+                <checkBox id="isInfinityBigField" property="isInfinityBig"/>
+            </column>
+            <column width="300px">
+                <textField id="unitField" property="unit"/>
+                <textField id="noteField" property="note"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

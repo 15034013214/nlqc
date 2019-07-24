@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+    <persistence-unit name="nlqc" transaction-type="RESOURCE_LOCAL">
+
+        <class>com.zk.nlqc.entitys.base.QcArgs</class>
+        <class>com.zk.nlqc.entitys.base.Device</class>
+        <class>com.zk.nlqc.entitys.base.Material</class>
+        <class>com.zk.nlqc.entitys.base.Frequency</class>
+        <class>com.zk.nlqc.entitys.base.CarModel</class>
+        <class>com.zk.nlqc.entitys.complex.WorkStation</class>
+        <class>com.zk.nlqc.entitys.complex.QcCourse</class>
+    </persistence-unit>
+</persistence>

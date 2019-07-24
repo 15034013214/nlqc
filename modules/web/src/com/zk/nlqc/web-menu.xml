@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
+    <menu id="application-nlqc" insertBefore="administration">
+    </menu>
+    <menu id="base" icon="BULK_EDIT_ACTION">
+        <item screen="nlqc_CarModel.browse"/>
+        <item screen="nlqc_Device.browse"/>
+        <item screen="nlqc_Material.browse"/>
+        <item screen="nlqc_QcArgs.browse"/>
+        <item screen="nlqc_Frequency.browse"/>
+    </menu>
+    <menu id="qcConfig" insertAfter="base">
+        <item screen="nlqc_WorkStation.browse"/>
+    </menu>
+</menu-config>

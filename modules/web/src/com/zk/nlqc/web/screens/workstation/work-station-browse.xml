@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://browseCaption"
+        focusComponent="workStationsTable"
+        messagesPack="com.zk.nlqc.web.screens.workstation">
+    <data readOnly="true">
+        <collection id="workStationsDc"
+                    class="com.zk.nlqc.entitys.complex.WorkStation"
+                    view="workStation-with-qcArgs-view">
+            <loader id="workStationsDl">
+                <query>
+                    <![CDATA[select e from nlqc_WorkStation e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="workStationsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="workStationsTable"
+                dataLoader="workStationsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="workStationsTable"
+                    width="100%"
+                    dataContainer="workStationsDc"
+                    multiselect="true">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="workStationNo"/>
+                <column id="workStationName"/>
+                <column id="qctype"/>
+                <column id="note"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="workStationsTable.create"/>
+                <button id="editBtn" action="workStationsTable.edit"/>
+                <button id="removeBtn" action="workStationsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://browseCaption"
+        focusComponent="qcArgsesTable"
+        messagesPack="com.zk.nlqc.web.screens.qcargs">
+    <data readOnly="true">
+        <collection id="qcArgsesDc"
+                    class="com.zk.nlqc.entitys.base.QcArgs"
+                    view="_local">
+            <loader id="qcArgsesDl">
+                <query>
+                    <![CDATA[select e from nlqc_QcArgs e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="qcArgsesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="qcArgsesTable"
+                dataLoader="qcArgsesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="qcArgsesTable"
+                    width="100%"
+                    dataContainer="qcArgsesDc"
+                    multiselect="true">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="qcArgsCode"/>
+                <column id="qcArgsType"/>
+                <column id="qcArgsNote"/>
+                <column id="note"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="qcArgsesTable.create"/>
+                <button id="editBtn" action="qcArgsesTable.edit"/>
+                <button id="removeBtn" action="qcArgsesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

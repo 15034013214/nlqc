@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<app-component xmlns="http://schemas.haulmont.com/cuba/app-component.xsd"
+               dependsOn="cn.cuba.trans, com.haulmont.cuba">
+
+    <module name="global" blocks="*">
+        <artifact name="app-global" appJar="true"/>
+
+        <property name="cuba.persistenceConfig" value="+com/zk/nlqc/persistence.xml"/>
+        <property name="cuba.metadataConfig" value="+com/zk/nlqc/metadata.xml"/>
+        <property name="cuba.viewsConfig" value="+com/zk/nlqc/views.xml"/>
+    </module>
+    <module name="core" dependsOn="global" blocks="core">
+        <artifact name="app-core" appJar="true"/>
+        <artifact name="app-core" classifier="db" ext="zip" configuration="dbscripts"/>
+
+        <property name="cuba.springContextConfig" value="+com/zk/nlqc/spring.xml"/>
+        <property name="cuba.mainMessagePack" value="+com.zk.nlqc.core"/>
+    </module>
+    <module name="web" dependsOn="global" blocks="web">
+        <artifact name="app-web" appJar="true"/>
+        <artifact name="app-web" classifier="web" ext="zip" configuration="webcontent"/>
+
+        <property name="cuba.springContextConfig" value="+com/zk/nlqc/web-spring.xml"/>
+        <property name="cuba.dispatcherSpringContextConfig" value="+com/zk/nlqc/web-dispatcher-spring.xml"/>
+        <property name="cuba.windowConfig" value="+com/zk/nlqc/web-screens.xml"/>
+        <property name="cuba.menuConfig" value="+com/zk/nlqc/web-menu.xml"/>
+        <property name="cuba.permissionConfig" value="+com/zk/nlqc/web-permissions.xml"/>
+        <property name="cuba.mainMessagePack" value="+com.zk.nlqc.web"/>
+    </module>
+</app-component>

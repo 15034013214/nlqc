@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://browseCaption"
+        focusComponent="frequenciesTable"
+        messagesPack="com.zk.nlqc.web.screens.frequency">
+    <data readOnly="true">
+        <collection id="frequenciesDc"
+                    class="com.zk.nlqc.entitys.base.Frequency"
+                    view="_local">
+            <loader id="frequenciesDl">
+                <query>
+                    <![CDATA[select e from nlqc_Frequency e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="frequenciesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="frequenciesTable"
+                dataLoader="frequenciesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="frequenciesTable"
+                    width="100%"
+                    dataContainer="frequenciesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="quantity"/>
+                <column id="unit"/>
+                <column id="isInfinityBig"/>
+                <column id="showText"/>
+                <column id="note"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="frequenciesTable.create"/>
+                <button id="editBtn" action="frequenciesTable.edit"/>
+                <button id="removeBtn" action="frequenciesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

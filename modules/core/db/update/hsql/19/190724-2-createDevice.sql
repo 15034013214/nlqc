@@ -1,0 +1,1 @@
+create unique index IDX_NLQC_DEVICE_UNIQ_DEVICE_NO on NLQC_DEVICE (DEVICE_NO) ;

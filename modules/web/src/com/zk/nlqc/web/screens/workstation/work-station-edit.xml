@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.zk.nlqc.web.screens.workstation">
+    <data>
+        <instance id="workStationDc"
+                  class="com.zk.nlqc.entitys.complex.WorkStation"
+                  view="workStation-with-qcArgs-view">
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="AUTO"
+                width="AUTO"
+                modal="true"
+                forceDialog="true"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="workStationDc">
+            <column width="300px">
+                <textField id="workStationNoField" property="workStationNo"/>
+                <textField id="workStationNameField" property="workStation"/>
+            </column>
+            <column width="300px">
+                <lookupField id="qctypeField" property="qctype"/>
+                <textField id="noteField" property="note"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>
