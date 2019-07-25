@@ -34,7 +34,7 @@
     </data>
     <dialogMode height="600"
                 width="800"/>
-    <layout expand="groupBox" spacing="true">
+    <layout expand="groupBox" spacing="true" height="100%" width="100%">
         <groupBox id="groupBox" spacing="true" expand="editActions">
             <form id="form" dataContainer="qcFlowDc">
                 <column width="250px">
@@ -70,14 +70,21 @@
                     <columns>
                         <column id="qcItemNo"/>
                         <column id="qcItemName"/>
+                        <column id="qcArgs"/>
+                        <column id="mateial"/>
+                        <column id="device"/>
                         <column id="unit"/>
                         <column id="normValue"/>
                         <column id="upValue"/>
                         <column id="belowValue"/>
                         <column id="isFirstQc"/>
+                        <column id="firstQcFrequency"/>
                         <column id="isInitiativeQc"/>
+                        <column id="initiativeQcFrequency"/>
                         <column id="isFinallyQc"/>
+                        <column id="finallyQcFrequency"/>
                         <column id="isRoundsQc"/>
+                        <column id="roundsQcFrequency"/>
                         <column id="isControlItem"/>
                         <column id="picture"/>
                     </columns>

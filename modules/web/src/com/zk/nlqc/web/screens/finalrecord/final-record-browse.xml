@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
         caption="msg://browseCaption"
-        focusComponent="qcFlowsTable"
-        messagesPack="com.zk.nlqc.web.screens.qcflow">
+        focusComponent="finalRecordsTable"
+        messagesPack="com.zk.nlqc.web.screens.finalrecord">
     <data readOnly="true">
-        <collection id="qcFlowsDc"
-                    class="com.zk.nlqc.entitys.complex.QcFlow"
-                    view="qcFlow-with-all-view">
-            <loader id="qcFlowsDl">
+        <collection id="finalRecordsDc"
+                    class="com.zk.nlqc.entitys.record.FinalRecord"
+                    view="_local">
+            <loader id="finalRecordsDl">
                 <query>
-                    <![CDATA[select e from nlqc_QcFlow e]]>
+                    <![CDATA[select e from nlqc_FinalRecord e]]>
                 </query>
             </loader>
         </collection>
     </data>
     <dialogMode height="600"
                 width="800"/>
-    <layout expand="qcFlowsTable"
+    <layout expand="finalRecordsTable"
             spacing="true">
         <filter id="filter"
-                applyTo="qcFlowsTable"
-                dataLoader="qcFlowsDl">
+                applyTo="finalRecordsTable"
+                dataLoader="finalRecordsDl">
             <properties include=".*"/>
         </filter>
-        <groupTable id="qcFlowsTable"
+        <groupTable id="finalRecordsTable"
                     width="100%"
-                    dataContainer="qcFlowsDc">
+                    dataContainer="finalRecordsDc">
             <actions>
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
-                <column id="carModel"/>
-                <column id="qcCourse"/>
-                <column id="workStation"/>
-                <column id="workStation.qctype"/>
+                <column id="flowNo"/>
+                <column id="carModelNo"/>
+                <column id="carModelName"/>
+                <column id="finalResult"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="createBtn" action="qcFlowsTable.create"/>
-                <button id="editBtn" action="qcFlowsTable.edit"/>
-                <button id="removeBtn" action="qcFlowsTable.remove"/>
+                <button id="createBtn" action="finalRecordsTable.create"/>
+                <button id="editBtn" action="finalRecordsTable.edit"/>
+                <button id="removeBtn" action="finalRecordsTable.remove"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

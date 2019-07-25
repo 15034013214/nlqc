@@ -185,3 +185,69 @@ create table NLQC_QC_FLOW (
     primary key (ID)
 )^
 -- end NLQC_QC_FLOW
+-- begin NLQC_QC_RECORD_ITEM
+create table NLQC_QC_RECORD_ITEM (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    FLOW_NO varchar(255),
+    CAR_MODEL_NO varchar(255),
+    QC_WORK_STATION_NO varchar(255),
+    QC_WORK_STATION_NAME varchar(255),
+    QC_TYPE varchar(255),
+    QC_ARGS_NO varchar(255),
+    QC_ARGS_TYPE varchar(255),
+    QC_ITEM_NO varchar(255),
+    QC_ITEM_NAME varchar(255),
+    KEY_MATERIAL_NO varchar(255),
+    KEY_MATERIAL_NAME varchar(255),
+    REALITY_IN_MATERIAL_NO varchar(255),
+    KEY_DEVICE_NO varchar(255),
+    KEY_DEVICE_NAME varchar(255),
+    NORM_VALUE decimal(19, 2),
+    UP_VALUE decimal(19, 2),
+    BELOW_VALUE decimal(19, 2),
+    REALITY_VALUE decimal(19, 2),
+    UNIT varchar(255),
+    FIRST_QC_FREQUENCY varchar(255),
+    INITIATIVE_QC_FREQUENCY varchar(255),
+    FINALLY_QC_FREQUENCY varchar(255),
+    ROUNDS_QC_FREQUENCY varchar(255),
+    IS_CONTROL_ITEM varchar(255),
+    QC_DEVICE varchar(255),
+    QC_TIME timestamp,
+    IS_QUALIFIED boolean,
+    IS_GOBACK_REPAIR boolean,
+    REFUSE_RECEIVE boolean,
+    FORCE_RECEIVE boolean,
+    ONCE_PASS boolean,
+    NG_MESSAGE varchar(255),
+    --
+    primary key (ID)
+)^
+-- end NLQC_QC_RECORD_ITEM
+-- begin NLQC_FINAL_RECORD
+create table NLQC_FINAL_RECORD (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    FLOW_NO varchar(255),
+    CAR_MODEL_NO varchar(255),
+    CAR_MODEL_NAME varchar(255),
+    FINAL_RESULT varchar(255),
+    --
+    primary key (ID)
+)^
+-- end NLQC_FINAL_RECORD

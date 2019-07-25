@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://browseCaption"
+        focusComponent="qcRecordBillsesTable"
+        messagesPack="com.zk.nlqc.web.screens.qcrecordbills">
+    <data readOnly="true">
+        <collection id="qcRecordBillsesDc"
+                    class="com.zk.nlqc.entitys.record.QcRecordBills"
+                    view="_local">
+            <loader id="qcRecordBillsesDl">
+                <query>
+                    <![CDATA[select e from nlqc_QcRecordItem e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="qcRecordBillsesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="qcRecordBillsesTable"
+                dataLoader="qcRecordBillsesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="qcRecordBillsesTable"
+                    width="100%"
+                    dataContainer="qcRecordBillsesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="flowNo"/>
+                <column id="carModelNo"/>
+                <column id="qcWorkStationNo"/>
+                <column id="qcWorkStationName"/>
+                <column id="qcType"/>
+                <column id="qcArgsNo"/>
+                <column id="qcArgsType"/>
+                <column id="qcItemNo"/>
+                <column id="qcItemName"/>
+                <column id="keyMaterialNo"/>
+                <column id="keyMaterialName"/>
+                <column id="realityInMaterialNo"/>
+                <column id="keyDeviceNo"/>
+                <column id="keyDeviceName"/>
+                <column id="normValue"/>
+                <column id="upValue"/>
+                <column id="belowValue"/>
+                <column id="realityValue"/>
+                <column id="unit"/>
+                <column id="firstQcFrequency"/>
+                <column id="initiativeQcFrequency"/>
+                <column id="finallyQcFrequency"/>
+                <column id="roundsQcFrequency"/>
+                <column id="isControlItem"/>
+                <column id="qcDevice"/>
+                <column id="qcTime"/>
+                <column id="isQualified"/>
+                <column id="isGobackRepair"/>
+                <column id="refuseReceive"/>
+                <column id="forceReceive"/>
+                <column id="oncePass"/>
+                <column id="ngMessage"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="qcRecordBillsesTable.create"/>
+                <button id="editBtn" action="qcRecordBillsesTable.edit"/>
+                <button id="removeBtn" action="qcRecordBillsesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.zk.nlqc.web.screens.qcrecordbills">
+    <data>
+        <instance id="qcRecordBillsDc"
+                  class="com.zk.nlqc.entitys.record.QcRecordBills"
+                  view="_local">
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <groupBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="qcRecordBillsDc">
+                <column width="250px">
+                    <textField id="flowNoField" property="flowNo"/>
+                    <textField id="carModelNoField" property="carModelNo"/>
+                    <textField id="qcWorkStationNoField" property="qcWorkStationNo"/>
+                    <textField id="qcWorkStationNameField" property="qcWorkStationName"/>
+                    <textField id="qcTypeField" property="qcType"/>
+                    <textField id="qcArgsNoField" property="qcArgsNo"/>
+                    <textField id="qcArgsTypeField" property="qcArgsType"/>
+                    <textField id="qcItemNoField" property="qcItemNo"/>
+                </column>
+                <column width="250px">
+                    <textField id="qcItemNameField" property="qcItemName"/>
+                    <textField id="keyMaterialNoField" property="keyMaterialNo"/>
+                    <textField id="keyMaterialNameField" property="keyMaterialName"/>
+                    <textField id="realityInMaterialNoField" property="realityInMaterialNo"/>
+                    <textField id="keyDeviceNoField" property="keyDeviceNo"/>
+                    <textField id="keyDeviceNameField" property="keyDeviceName"/>
+                    <textField id="normValueField" property="normValue"/>
+                    <textField id="upValueField" property="upValue"/>
+                </column>
+                <column width="250px">
+                    <textField id="belowValueField" property="belowValue"/>
+                    <textField id="realityValueField" property="realityValue"/>
+                    <textField id="unitField" property="unit"/>
+                    <textField id="firstQcFrequencyField" property="firstQcFrequency"/>
+                    <textField id="initiativeQcFrequencyField" property="initiativeQcFrequency"/>
+                    <textField id="finallyQcFrequencyField" property="finallyQcFrequency"/>
+                    <textField id="roundsQcFrequencyField" property="roundsQcFrequency"/>
+                    <textField id="isControlItemField" property="isControlItem"/>
+                </column>
+                <column width="250px">
+                    <textField id="qcDeviceField" property="qcDevice"/>
+                    <textField id="ngMessageField" property="ngMessage"/>
+                    <dateField id="qcTimeField" property="qcTime"/>
+                    <checkBox id="isQualifiedField" property="isQualified"/>
+                    <checkBox id="isGobackRepairField" property="isGobackRepair"/>
+                    <checkBox id="refuseReceiveField" property="refuseReceive"/>
+                    <checkBox id="forceReceiveField" property="forceReceive"/>
+                    <checkBox id="oncePassField" property="oncePass"/>
+                </column>
+            </form>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>
