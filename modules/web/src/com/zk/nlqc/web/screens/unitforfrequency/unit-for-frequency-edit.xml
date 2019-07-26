@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.zk.nlqc.web.screens.unitforfrequency">
+    <data>
+        <instance id="unitForFrequencyDc"
+                  class="com.zk.nlqc.entitys.base.UnitForFrequency"
+                  view="_local">
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="AUTO"
+                width="AUTO"
+                modal="true"
+                forceDialog="true"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="unitForFrequencyDc">
+            <column width="250px">
+                <textField id="valueField" property="value"/>
+                <lookupField id="unitField" property="unit"/>
+                <textField id="unitNameField" property="unitName" editable="false"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

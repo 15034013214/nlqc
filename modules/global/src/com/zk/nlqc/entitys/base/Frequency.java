@@ -2,10 +2,12 @@ package com.zk.nlqc.entitys.base;
 
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
+import com.haulmont.cuba.core.entity.annotation.Lookup;
+import com.haulmont.cuba.core.entity.annotation.LookupType;
+import com.haulmont.cuba.core.entity.annotation.OnDeleteInverse;
+import com.haulmont.cuba.core.global.DeletePolicy;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @NamePattern("%s|showText")
 @Table(name = "NLQC_FREQUENCY")
@@ -14,10 +16,13 @@ public class Frequency extends StandardEntity {
     private static final long serialVersionUID = 5331657026245938034L;
 
     @Column(name = "QUANTITY")
-    protected String quantity;
+    protected Integer quantity;
 
-    @Column(name = "UNIT")
-    protected String unit;
+    @OnDeleteInverse(DeletePolicy.DENY)
+    @Lookup(type = LookupType.DROPDOWN, actions = {"lookup", "open", "clear"})
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "UNIT_ID")
+    protected UnitForFrequency unit;
 
     @Column(name = "IS_INFINITY_BIG")
     protected Boolean isInfinityBig;
@@ -27,6 +32,22 @@ public class Frequency extends StandardEntity {
 
     @Column(name = "NOTE")
     protected String note;
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setUnit(UnitForFrequency unit) {
+        this.unit = unit;
+    }
+
+    public UnitForFrequency getUnit() {
+        return unit;
+    }
 
     public String getNote() {
         return note;
@@ -52,19 +73,4 @@ public class Frequency extends StandardEntity {
         this.isInfinityBig = isInfinityBig;
     }
 
-    public String getUnit() {
-        return unit;
-    }
-
-    public void setUnit(String unit) {
-        this.unit = unit;
-    }
-
-    public String getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(String quantity) {
-        this.quantity = quantity;
-    }
 }

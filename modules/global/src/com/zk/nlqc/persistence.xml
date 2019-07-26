@@ -13,5 +13,6 @@
         <class>com.zk.nlqc.entitys.complex.QcFlow</class>
         <class>com.zk.nlqc.entitys.record.QcRecordBills</class>
         <class>com.zk.nlqc.entitys.record.FinalRecord</class>
+        <class>com.zk.nlqc.entitys.base.UnitForFrequency</class>
     </persistence-unit>
 </persistence>

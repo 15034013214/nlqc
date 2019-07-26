@@ -1,0 +1,2 @@
+alter table NLQC_FREQUENCY add constraint FK_NLQC_FREQUENCY_ON_UNIT foreign key (UNIT_ID) references NLQC_UNIT_FOR_FREQUENCY(ID);
+create index IDX_NLQC_FREQUENCY_ON_UNIT on NLQC_FREQUENCY (UNIT_ID);

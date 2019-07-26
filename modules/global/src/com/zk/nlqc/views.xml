@@ -96,4 +96,7 @@
             <property name="picture"/>
         </property>
     </view>
+    <view entity="nlqc_Frequency" name="frequency-with-unit-view" extends="_local">
+        <property name="unit" view="_minimal"/>
+    </view>
 </views>

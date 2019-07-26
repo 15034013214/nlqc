@@ -105,8 +105,8 @@ create table NLQC_FREQUENCY (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    QUANTITY varchar(255),
-    UNIT varchar(255),
+    QUANTITY integer,
+    UNIT_ID varchar(36),
     IS_INFINITY_BIG boolean,
     SHOW_TEXT varchar(255),
     NOTE varchar(255),
@@ -251,3 +251,21 @@ create table NLQC_FINAL_RECORD (
     primary key (ID)
 )^
 -- end NLQC_FINAL_RECORD
+-- begin NLQC_UNIT_FOR_FREQUENCY
+create table NLQC_UNIT_FOR_FREQUENCY (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    VALUE_ integer not null,
+    UNIT varchar(50) not null,
+    UNIT_NAME varchar(255) not null,
+    --
+    primary key (ID)
+)^
+-- end NLQC_UNIT_FOR_FREQUENCY

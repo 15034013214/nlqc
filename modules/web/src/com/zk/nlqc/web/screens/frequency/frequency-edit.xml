@@ -6,9 +6,14 @@
     <data>
         <instance id="frequencyDc"
                   class="com.zk.nlqc.entitys.base.Frequency"
-                  view="_local">
+                  view="frequency-with-unit-view">
             <loader/>
         </instance>
+        <collection id="unitForFrequenciesDc" class="com.zk.nlqc.entitys.base.UnitForFrequency" view="_local">
+            <loader>
+                <query><![CDATA[select e from nlqc_UnitForFrequency e ]]></query>
+            </loader>
+        </collection>
     </data>
     <dialogMode height="AUTO"
                 width="AUTO"
@@ -22,7 +27,14 @@
                 <checkBox id="isInfinityBigField" property="isInfinityBig"/>
             </column>
             <column width="300px">
-                <textField id="unitField" property="unit"/>
+                <lookupPickerField id="unitField" optionsContainer="unitForFrequenciesDc"
+                                   property="unit">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="open" type="picker_open"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </lookupPickerField>
                 <textField id="noteField" property="note"/>
             </column>
         </form>
