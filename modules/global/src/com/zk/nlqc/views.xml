@@ -5,21 +5,31 @@
         <property name="qcArgs" view="_minimal">
             <property name="qcArgsNote"/>
             <property name="note"/>
+            <property name="workStations" view="_minimal"/>
         </property>
-        <property name="qcCourse" view="_minimal">
-            <property name="qcCourseNo"/>
-            <property name="qcCourseName"/>
+        <property name="device" view="_minimal">
+            <property name="deviceModel"/>
+            <property name="deviceStatus"/>
+            <property name="deviceType"/>
             <property name="note"/>
+            <property name="workStation" view="_minimal"/>
         </property>
+        <property name="qcCourses" view="_minimal"/>
     </view>
     <view entity="nlqc_QcArgs" name="qcArgs-workStation-view" extends="_local">
-        <property name="workStation" view="_minimal"/>
+        <property name="workStations" view="_minimal">
+            <property name="qctype"/>
+            <property name="qcArgs" view="_minimal"/>
+            <property name="device" view="_minimal"/>
+            <property name="note"/>
+        </property>
     </view>
     <view entity="nlqc_QcCourse" name="qcCourse-with-workStation-view" extends="_local">
         <property name="workStation" view="_minimal">
             <property name="qctype"/>
             <property name="qcArgs" view="_minimal"/>
             <property name="note"/>
+            <property name="qcCourses" view="_minimal"/>
         </property>
     </view>
     <view entity="nlqc_QcItem" name="qcItem-with-all-view" extends="_local">
@@ -46,7 +56,6 @@
             <property name="unit"/>
             <property name="isInfinityBig"/>
         </property>
-        <property name="qcFlow" view="_minimal"/>
     </view>
     <view entity="nlqc_QcFlow" name="qcFlow-with-all-view" extends="_local">
         <property name="carModel" view="_minimal"/>
@@ -59,6 +68,7 @@
         </property>
         <property name="workStation" view="_minimal">
             <property name="qctype"/>
+            <property name="qcArgs" view="_minimal"/>
         </property>
         <property name="qcItem" view="_minimal">
             <property name="qcArgs" view="_minimal"/>
@@ -98,5 +108,41 @@
     </view>
     <view entity="nlqc_Frequency" name="frequency-with-unit-view" extends="_local">
         <property name="unit" view="_minimal"/>
+    </view>
+    <view entity="nlqc_Device" name="device-with-workStation-view" extends="_local">
+        <property name="workStation" view="_minimal"/>
+    </view>
+    <view entity="nlqc_QcRecordBillsItem" name="qcRecordBillsItem-view" extends="_local">
+        <property name="firstHz" view="_minimal"/>
+        <property name="initiativeHz" view="_minimal"/>
+        <property name="lastHz" view="_minimal"/>
+        <property name="circleHz" view="_minimal"/>
+        <property name="qcRecordBills" view="_minimal">
+            <property name="qcRecordBillItem"/>
+        </property>
+    </view>
+    <view entity="nlqc_QcRecordBills" name="qcRecordBills-view" extends="_local">
+        <property name="qcRecordItem" view="_minimal">
+            <property name="qcItemNo"/>
+            <property name="qcArgsNo"/>
+            <property name="keyMaterialNo"/>
+            <property name="actualMaterialNo"/>
+            <property name="qcDeviceNo"/>
+            <property name="actualDeviceNo"/>
+            <property name="normValue"/>
+            <property name="upValue"/>
+            <property name="downValue"/>
+            <property name="actualValue"/>
+            <property name="unit"/>
+            <property name="firstHz" view="_minimal"/>
+            <property name="initiativeHz" view="_minimal"/>
+            <property name="lastHz" view="_minimal"/>
+            <property name="circleHz" view="_minimal"/>
+            <property name="qcTime"/>
+            <property name="isControl"/>
+            <property name="qcResult"/>
+            <property name="note"/>
+            <property name="qcRecordBills" view="_minimal"/>
+        </property>
     </view>
 </views>

@@ -1,0 +1,2 @@
+alter table NLQC_WORK_STATION_DEVICE_LINK add constraint FK_WORSTADEV_ON_WORK_STATION foreign key (WORK_STATION_ID) references NLQC_WORK_STATION(ID);
+alter table NLQC_WORK_STATION_DEVICE_LINK add constraint FK_WORSTADEV_ON_DEVICE foreign key (DEVICE_ID) references NLQC_DEVICE(ID);

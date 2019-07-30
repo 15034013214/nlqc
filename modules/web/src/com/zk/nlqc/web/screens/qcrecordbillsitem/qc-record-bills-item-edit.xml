@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.zk.nlqc.web.screens.qcrecordbillsitem">
+    <data>
+        <instance id="qcRecordBillsItemDc"
+                  class="com.zk.nlqc.entitys.record.QcRecordBillsItem"
+                  view="qcRecordBillsItem-view">
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true" width="100%" height="100%">
+        <groupBox id="groupBox" spacing="true" expand="scrollBox">
+            <scrollBox id="scrollBox" spacing="true">
+                <form id="form" dataContainer="qcRecordBillsItemDc">
+                    <column width="250px">
+                        <textField id="qcRecordBillItemField" property="qcRecordBillItem"/>
+                        <textField id="qcItemNoField" property="qcItemNo"/>
+                        <textField id="qcArgsNoField" property="qcArgsNo"/>
+                        <textField id="keyMaterialNoField" property="keyMaterialNo"/>
+                        <textField id="actualMaterialNoField" property="actualMaterialNo"/>
+                        <textField id="qcDeviceNoField" property="qcDeviceNo"/>
+                        <textField id="actualDeviceNoField" property="actualDeviceNo"/>
+                    </column>
+                    <column width="250px">
+                        <textField id="normValueField" property="normValue"/>
+                        <textField id="upValueField" property="upValue"/>
+                        <textField id="downValueField" property="downValue"/>
+                        <textField id="actualValueField" property="actualValue"/>
+                        <textField id="unitField" property="unit"/>
+                        <pickerField id="firstHzField" property="firstHz">
+                            <actions>
+                                <action id="lookup" type="picker_lookup"/>
+                                <action id="clear" type="picker_clear"/>
+                            </actions>
+                        </pickerField>
+                        <pickerField id="initiativeHzField" property="initiativeHz">
+                            <actions>
+                                <action id="lookup" type="picker_lookup"/>
+                                <action id="clear" type="picker_clear"/>
+                            </actions>
+                        </pickerField>
+                    </column>
+                    <column width="250px">
+                        <pickerField id="lastHzField" property="lastHz">
+                            <actions>
+                                <action id="lookup" type="picker_lookup"/>
+                                <action id="clear" type="picker_clear"/>
+                            </actions>
+                        </pickerField>
+                        <pickerField id="circleHzField" property="circleHz">
+                            <actions>
+                                <action id="lookup" type="picker_lookup"/>
+                                <action id="clear" type="picker_clear"/>
+                            </actions>
+                        </pickerField>
+                        <dateField id="qcTimeField" property="qcTime"/>
+                        <checkBox id="isControlField" property="isControl"/>
+                        <lookupField id="qcResultField" property="qcResult"/>
+                        <textField id="noteField" property="note"/>
+                    </column>
+                </form>
+            </scrollBox>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

@@ -6,7 +6,7 @@
     <data>
         <instance id="deviceDc"
                   class="com.zk.nlqc.entitys.base.Device"
-                  view="_local">
+                  view="device-with-workStation-view">
             <loader/>
         </instance>
     </data>
@@ -18,10 +18,11 @@
         <form id="form" dataContainer="deviceDc">
             <column width="300px">
                 <textField id="deviceNoField" property="deviceNo"/>
-                <textField id="deviceNameField" property="deviceName"/>
+                <lookupField id="deviceTypeField" property="deviceType"/>
                 <textField id="deviceModelField" property="deviceModel"/>
             </column>
             <column width="300px">
+                <textField id="deviceNameField" property="deviceName"/>
                 <textField id="deviceStatusField" property="deviceStatus"/>
                 <textField id="noteField" property="note"/>
             </column>

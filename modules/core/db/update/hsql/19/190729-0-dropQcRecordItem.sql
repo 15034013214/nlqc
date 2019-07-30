@@ -1,0 +1,1 @@
+alter table NLQC_QC_RECORD_ITEM rename to NLQC_QC_RECORD_ITEM__U43027 ;

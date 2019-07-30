@@ -1,0 +1,3 @@
+alter table NLQC_WORK_STATION alter column QC_COURSE_ID rename to QC_COURSE_ID__U61138 ^
+drop index IDX_NLQC_WORK_STATION_ON_QC_COURSE ;
+alter table NLQC_WORK_STATION drop constraint FK_NLQC_WORK_STATION_ON_QC_COURSE ;

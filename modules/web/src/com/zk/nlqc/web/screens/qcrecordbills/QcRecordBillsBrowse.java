@@ -3,7 +3,7 @@ package com.zk.nlqc.web.screens.qcrecordbills;
 import com.haulmont.cuba.gui.screen.*;
 import com.zk.nlqc.entitys.record.QcRecordBills;
 
-@UiController("nlqc_QcRecordItem.browse")
+@UiController("nlqc_QcRecordBills.browse")
 @UiDescriptor("qc-record-bills-browse.xml")
 @LookupComponent("qcRecordBillsesTable")
 @LoadDataBeforeShow

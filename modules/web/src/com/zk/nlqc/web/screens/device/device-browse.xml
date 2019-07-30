@@ -6,7 +6,7 @@
     <data readOnly="true">
         <collection id="devicesDc"
                     class="com.zk.nlqc.entitys.base.Device"
-                    view="_local">
+                    view="device-with-workStation-view">
             <loader id="devicesDl">
                 <query>
                     <![CDATA[select e from nlqc_Device e]]>
@@ -35,6 +35,7 @@
             <columns>
                 <column id="deviceNo"/>
                 <column id="deviceName"/>
+                <column id="deviceType"/>
                 <column id="deviceModel"/>
                 <column id="deviceStatus"/>
                 <column id="note"/>

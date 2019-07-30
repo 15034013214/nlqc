@@ -32,8 +32,7 @@
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
-<!--                <column id="quantity"/>-->
-<!--                <column id="unit"/>-->
+                <column id="frequencyNo"/>
                 <column id="showText"/>
                 <column id="isInfinityBig"/>
                 <column id="note"/>

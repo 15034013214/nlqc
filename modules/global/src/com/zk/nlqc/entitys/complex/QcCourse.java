@@ -6,10 +6,7 @@ import com.haulmont.cuba.core.entity.annotation.OnDelete;
 import com.haulmont.cuba.core.entity.annotation.OnDeleteInverse;
 import com.haulmont.cuba.core.global.DeletePolicy;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
@@ -26,9 +23,10 @@ public class QcCourse extends StandardEntity {
     @Column(name = "QC_COURSE_NAME")
     protected String qcCourseName;
 
+    @JoinTable(name = "NLQC_QC_COURSE_WORK_STATION_LINK", joinColumns = @JoinColumn(name = "QC_COURSE_ID"), inverseJoinColumns = @JoinColumn(name = "WORK_STATION_ID"))
+    @ManyToMany
     @OnDeleteInverse(DeletePolicy.DENY)
     @OnDelete(DeletePolicy.UNLINK)
-    @OneToMany(mappedBy = "qcCourse")
     protected List<WorkStation> workStation;
 
     @Column(name = "NOTE")

@@ -1,0 +1,1 @@
+drop table NLQC_QC_RECORD_ITEM__U43027 if exists cascade ;

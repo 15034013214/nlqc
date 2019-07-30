@@ -2,3 +2,12 @@
 @mixin com_zk_nlqc-hover-ext {
 
 }
+
+.v-table-row-cs.cs.imported-table-rad td {
+    font-weight: bold;
+    background: #e80d0f;
+    color: #FF9874;
+    .v-grid-selection-checkbox {
+      display: none;
+    }
+}

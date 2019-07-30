@@ -15,15 +15,15 @@
                 width="800"/>
     <layout expand="groupBox" spacing="true">
         <groupBox id="groupBox" spacing="true" expand="editActions">
-            <form id="form" dataContainer="qcCourseDc">
-                <column width="300px">
-                    <textField id="qcCourseNoField" property="qcCourseNo"/>
+            <form id="form" dataContainer="qcCourseDc" width="100%">
+                <column width="100%">
+                    <textField id="qcCourseNoField" property="qcCourseNo" width="80%"/>
                 </column>
-                <column width="300px">
-                    <textField id="qcCourseNameField" property="qcCourseName"/>
+                <column width="100%">
+                    <textField id="qcCourseNameField" property="qcCourseName" width="80%"/>
                 </column>
-                <column width="300px">
-                    <textField id="noteField" property="note"/>
+                <column width="100%">
+                    <textField id="noteField" property="note" width="80%"/>
                 </column>
             </form>
             <groupBox spacing="true" caption="&#37197;&#32622;&#36136;&#26816;&#24037;&#20316;&#31449;">

@@ -2,10 +2,10 @@ package com.zk.nlqc.entitys.base;
 
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
+import com.zk.nlqc.entitys.complex.WorkStation;
+import com.zk.nlqc.enums.DeviceType;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @NamePattern("%s %s|deviceNo,deviceName")
@@ -28,8 +28,30 @@ public class Device extends StandardEntity {
     @Column(name = "DEVICE_STATUS")
     protected String deviceStatus;
 
+    @Column(name = "DEVICE_TYPE")
+    protected String deviceType;
+
     @Column(name = "NOTE")
     protected String note;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "WORK_STATION_ID")
+    protected WorkStation workStation;
+
+    public WorkStation getWorkStation() {
+        return workStation;
+    }
+
+    public void setWorkStation(WorkStation workStation) {
+        this.workStation = workStation;
+    }
+
+    public DeviceType getDeviceType() {
+        return deviceType == null ? null : DeviceType.fromId(deviceType);
+    }
+
+    public void setDeviceType(DeviceType deviceType) {
+        this.deviceType = deviceType == null ? null : deviceType.getId();
+    }
 
     public String getNote() {
         return note;

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
-    <menu id="application-nlqc" insertBefore="administration">
-    </menu>
+    <menu id="application-nlqc" insertBefore="administration"/>
     <menu id="base" icon="BULK_EDIT_ACTION">
         <item screen="nlqc_CarModel.browse"/>
         <item screen="nlqc_Device.browse"/>
@@ -10,15 +9,16 @@
         <item screen="nlqc_QcArgs.browse"/>
         <item screen="nlqc_Frequency.browse"/>
     </menu>
-    <menu id="qcConfig" insertAfter="base" icon="font-icon:COGS">
+    <menu id="qcConfig" icon="font-icon:COGS" insertAfter="base">
         <item screen="nlqc_WorkStation.browse"/>
         <item screen="nlqc_QcCourse.browse"/>
         <separator/>
-        <item screen="nlqc_QcItem.browse"/>
         <item screen="nlqc_QcFlow.browse"/>
     </menu>
     <menu id="qcRecord" icon="BUILDING">
-        <item screen="nlqc_QcRecordItem.browse"/>
+        <item screen="nlqc_QcRecordBills.browse"/>
         <item screen="nlqc_FinalRecord.browse"/>
+    </menu>
+    <menu id="statistics" icon="BAR_CHART">
     </menu>
 </menu-config>

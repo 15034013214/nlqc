@@ -9,6 +9,7 @@
                   view="workStation-with-qcArgs-view">
             <loader id="workStationDl"/>
             <collection id="workStationQcArgsesDc" property="qcArgs"/>
+            <collection id="workStationDevicesDc" property="device"/>
         </instance>
     </data>
     <dialogMode height="100%"
@@ -25,27 +26,53 @@
                     <textField id="noteField" property="note"/>
                 </column>
             </form>
-            <groupBox spacing="true" caption="&#26816;&#27979;&#21442;&#25968;&#37197;&#32622;">
-                <groupTable id="groupTable" width="100%" dataContainer="workStationQcArgsesDc">
-                    <columns>
-                        <column id="qcArgsCode"/>
-                        <column id="qcArgsType"/>
-                        <column id="qcArgsNote"/>
-                        <column id="note"/>
-                    </columns>
-                    <actions>
-                        <action id="create" icon="CREATE_ACTION" type="create"/>
-                        <action id="remove" icon="REMOVE" type="remove"/>
-                        <action id="edit" icon="EDIT" type="edit"/>
-                        <action id="add" type="add"/>
-                        <action id="exclude" type="exclude"/>
-                    </actions>
-                    <buttonsPanel>
-                        <button action="groupTable.add"/>
-                        <button action="groupTable.edit"/>
-                        <button action="groupTable.exclude"/>
-                    </buttonsPanel>
-                </groupTable>
+            <groupBox spacing="true">
+                <tabSheet>
+                    <tab id="tab" caption="&#26816;&#27979;&#21442;&#25968;&#37197;&#32622;" margin="true,false,false,false" spacing="true">
+                        <groupTable id="groupTable" width="100%" dataContainer="workStationQcArgsesDc">
+                            <columns>
+                                <column id="qcArgsCode"/>
+                                <column id="qcArgsType"/>
+                                <column id="qcArgsNote"/>
+                                <column id="note"/>
+                            </columns>
+                            <actions>
+                                <action id="create" icon="CREATE_ACTION" type="create"/>
+                                <action id="remove" icon="REMOVE" type="remove"/>
+                                <action id="edit" icon="EDIT" type="edit"/>
+                                <action id="add" type="add"/>
+                                <action id="exclude" type="exclude"/>
+                            </actions>
+                            <buttonsPanel>
+                                <button action="groupTable.add"/>
+                                <button action="groupTable.edit"/>
+                                <button action="groupTable.exclude"/>
+                            </buttonsPanel>
+                        </groupTable>
+                    </tab>
+                    <tab id="tab_1" caption="&#21487;&#29992;&#35774;&#22791;&#37197;&#32622;" margin="true,false,false,false" spacing="true">
+                        <groupTable id="workStationDeviceTable" dataContainer="workStationDevicesDc" width="100%">
+                            <columns>
+                                <column id="deviceNo"/>
+                                <column id="deviceName"/>
+                                <column id="deviceModel"/>
+                                <column id="deviceStatus"/>
+                                <column id="deviceType"/>
+                                <column id="note"/>
+                            </columns>
+                            <actions>
+                                <action id="add" type="add"/>
+                                <action id="edit" type="edit"/>
+                                <action id="exclude" type="exclude"/>
+                            </actions>
+                            <buttonsPanel>
+                                <button action="workStationDeviceTable.add"/>
+                                <button action="workStationDeviceTable.edit"/>
+                                <button action="workStationDeviceTable.exclude"/>
+                            </buttonsPanel>
+                        </groupTable>
+                    </tab>
+                </tabSheet>
             </groupBox>
             <hbox id="editActions" spacing="true">
                 <button action="windowCommitAndClose"/>

@@ -1,0 +1,2 @@
+alter table NLQC_QC_FLOW_QC_ITEM_LINK add constraint FK_QCFLOQCITE_ON_QC_FLOW foreign key (QC_FLOW_ID) references NLQC_QC_FLOW(ID);
+alter table NLQC_QC_FLOW_QC_ITEM_LINK add constraint FK_QCFLOQCITE_ON_QC_ITEM foreign key (QC_ITEM_ID) references NLQC_QC_ITEM(ID);

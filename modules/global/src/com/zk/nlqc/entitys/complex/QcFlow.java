@@ -1,5 +1,6 @@
 package com.zk.nlqc.entitys.complex;
 
+import com.haulmont.chile.core.annotations.Composition;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.Lookup;
@@ -12,11 +13,14 @@ import com.zk.nlqc.entitys.base.CarModel;
 import javax.persistence.*;
 import java.util.List;
 
-@NamePattern("%s %s %s|carModel,qcCourse,workStation")
+@NamePattern("%s|qcFlowNo")
 @Table(name = "NLQC_QC_FLOW")
 @Entity(name = "nlqc_QcFlow")
 public class QcFlow extends StandardEntity {
     private static final long serialVersionUID = -3704377907276222730L;
+
+    @Column(name = "QC_FLOW_NO")
+    protected String qcFlowNo;
 
     @Lookup(type = LookupType.DROPDOWN, actions = {"lookup", "open", "clear"})
     @ManyToOne(fetch = FetchType.LAZY)
@@ -33,10 +37,30 @@ public class QcFlow extends StandardEntity {
     @JoinColumn(name = "WORK_STATION_ID")
     protected WorkStation workStation;
 
-    @OnDeleteInverse(DeletePolicy.DENY)
-    @OnDelete(DeletePolicy.UNLINK)
     @OneToMany(mappedBy = "qcFlow")
+    @Composition
+    @OnDeleteInverse(DeletePolicy.UNLINK)
+    @OnDelete(DeletePolicy.UNLINK)
     protected List<QcItem> qcItem;
+
+    @Column(name = "IS_USE")
+    protected Boolean isUse = true;
+
+    public String getQcFlowNo() {
+        return qcFlowNo;
+    }
+
+    public void setQcFlowNo(String qcFlowNo) {
+        this.qcFlowNo = qcFlowNo;
+    }
+
+    public Boolean getIsUse() {
+        return isUse;
+    }
+
+    public void setIsUse(Boolean isUse) {
+        this.isUse = isUse;
+    }
 
     public List<QcItem> getQcItem() {
         return qcItem;

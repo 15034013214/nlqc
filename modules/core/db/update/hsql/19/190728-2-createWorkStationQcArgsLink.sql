@@ -1,0 +1,2 @@
+alter table NLQC_WORK_STATION_QC_ARGS_LINK add constraint FK_WORSTAQCARG_ON_QC_ARGS foreign key (QC_ARGS_ID) references NLQC_QC_ARGS(ID);
+alter table NLQC_WORK_STATION_QC_ARGS_LINK add constraint FK_WORSTAQCARG_ON_WORK_STATION foreign key (WORK_STATION_ID) references NLQC_WORK_STATION(ID);

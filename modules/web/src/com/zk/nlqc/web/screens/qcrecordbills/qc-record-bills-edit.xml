@@ -6,60 +6,187 @@
     <data>
         <instance id="qcRecordBillsDc"
                   class="com.zk.nlqc.entitys.record.QcRecordBills"
-                  view="_local">
-            <loader/>
+                  view="qcRecordBills-view">
+            <loader id="qcRecordBillsDl"/>
+            <collection id="qcRecordItemDc" property="qcRecordItem"/>
         </instance>
+        <collection id="quantityQcDc" class="com.zk.nlqc.entitys.record.QcRecordBillsItem">
+            <loader id="quantityQcDl">
+                <query><![CDATA[select e from nlqc_QcRecordBillsItem e where e.qcRecordBills = :qcRecordBill and e.qcArgsNo = :qcArgsNo]]></query>
+            </loader>
+        </collection>
+        <collection id="deviceQcDc" class="com.zk.nlqc.entitys.record.QcRecordBillsItem" view="qcRecordBillsItem-view">
+            <loader id="deviceQcDl">
+                <query><![CDATA[select e from nlqc_QcRecordBillsItem e where e.qcRecordBills = :qcRecordBill and e.qcArgsNo = :qcArgsNo]]></query>
+            </loader>
+        </collection>
+        <collection id="materialQcDc" class="com.zk.nlqc.entitys.record.QcRecordBillsItem"
+                    view="qcRecordBillsItem-view">
+            <loader id="materialQcDl">
+                <query><![CDATA[select e from nlqc_QcRecordBillsItem e where e.qcRecordBills = :qcRecordBill and e.qcArgsNo = :qcArgsNo]]></query>
+            </loader>
+        </collection>
+        <collection id="guiseQcDc" class="com.zk.nlqc.entitys.record.QcRecordBillsItem" view="qcRecordBillsItem-view">
+            <loader id="guiseQcDcl">
+                <query><![CDATA[select e from nlqc_QcRecordBillsItem e where e.qcRecordBills = :qcRecordBill and e.qcArgsNo = :qcArgsNo]]></query>
+            </loader>
+        </collection>
     </data>
     <dialogMode height="600"
                 width="800"/>
-    <layout expand="editActions" spacing="true">
-        <groupBox id="scrollBox" spacing="true">
-            <form id="form" dataContainer="qcRecordBillsDc">
-                <column width="250px">
-                    <textField id="flowNoField" property="flowNo"/>
-                    <textField id="carModelNoField" property="carModelNo"/>
-                    <textField id="qcWorkStationNoField" property="qcWorkStationNo"/>
-                    <textField id="qcWorkStationNameField" property="qcWorkStationName"/>
-                    <textField id="qcTypeField" property="qcType"/>
-                    <textField id="qcArgsNoField" property="qcArgsNo"/>
-                    <textField id="qcArgsTypeField" property="qcArgsType"/>
-                    <textField id="qcItemNoField" property="qcItemNo"/>
+    <layout expand="groupBox" spacing="true">
+        <groupBox id="groupBox" spacing="true" expand="editActions">
+            <form id="form" dataContainer="qcRecordBillsDc" width="100%">
+                <column width="30%">
+                    <textField id="qcRecordBillItemField" property="qcRecordBillItem" width="80%"/>
+                    <dateField id="createTimeField" property="createTime" width="80%"/>
+                    <textField id="carModelNoField" property="carModelNo" width="80%"/>
                 </column>
-                <column width="250px">
-                    <textField id="qcItemNameField" property="qcItemName"/>
-                    <textField id="keyMaterialNoField" property="keyMaterialNo"/>
-                    <textField id="keyMaterialNameField" property="keyMaterialName"/>
-                    <textField id="realityInMaterialNoField" property="realityInMaterialNo"/>
-                    <textField id="keyDeviceNoField" property="keyDeviceNo"/>
-                    <textField id="keyDeviceNameField" property="keyDeviceName"/>
-                    <textField id="normValueField" property="normValue"/>
-                    <textField id="upValueField" property="upValue"/>
+                <column width="30%">
+                    <textField id="qcWorkStationNoField" property="qcWorkStationNo" width="80%"/>
+                    <textField id="qcArgsNoField" property="qcArgsNo" width="80%"/>
+                    <textField id="qcTypeField" property="qcType" width="80%"/>
                 </column>
-                <column width="250px">
-                    <textField id="belowValueField" property="belowValue"/>
-                    <textField id="realityValueField" property="realityValue"/>
-                    <textField id="unitField" property="unit"/>
-                    <textField id="firstQcFrequencyField" property="firstQcFrequency"/>
-                    <textField id="initiativeQcFrequencyField" property="initiativeQcFrequency"/>
-                    <textField id="finallyQcFrequencyField" property="finallyQcFrequency"/>
-                    <textField id="roundsQcFrequencyField" property="roundsQcFrequency"/>
-                    <textField id="isControlItemField" property="isControlItem"/>
-                </column>
-                <column width="250px">
-                    <textField id="qcDeviceField" property="qcDevice"/>
-                    <textField id="ngMessageField" property="ngMessage"/>
-                    <dateField id="qcTimeField" property="qcTime"/>
-                    <checkBox id="isQualifiedField" property="isQualified"/>
-                    <checkBox id="isGobackRepairField" property="isGobackRepair"/>
-                    <checkBox id="refuseReceiveField" property="refuseReceive"/>
-                    <checkBox id="forceReceiveField" property="forceReceive"/>
-                    <checkBox id="oncePassField" property="oncePass"/>
+                <column width="30%">
+                    <textField id="qcUserField" property="qcUser" width="80%"/>
+                    <lookupField id="qcRresultField" property="qcRresult" width="80%"/>
+                    <textField id="noteField" property="note" width="80%"/>
                 </column>
             </form>
+            <groupBox id="groupBox_q" caption="msg://qcRItem">
+                <tabSheet>
+                    <tab id="tab_qualityQc" caption="msg://tab_qualityQc" margin="true,false,false,false" spacing="true">
+                        <groupTable id="groupTable" width="100%" height="100%" dataContainer="quantityQcDc">
+                            <columns>
+                                <column id="qcRecordBillItem"/>
+                                <column id="qcItemNo"/>
+                                <column id="qcArgsNo"/>
+                                <column id="keyMaterialNo"/>
+                                <column id="actualMaterialNo"/>
+                                <column id="qcDeviceNo"/>
+                                <column id="actualDeviceNo"/>
+                                <column id="normValue"/>
+                                <column id="upValue"/>
+                                <column id="downValue"/>
+                                <column id="actualValue"/>
+                                <column id="unit"/>
+                                <column id="qcTime"/>
+                                <column id="isControl"/>
+                                <column id="qcResult"/>
+                                <column id="note"/>
+                            </columns>
+                        </groupTable>
+                    </tab>
+                    <tab id="tab_deviceQc" caption="msg://tab_deviceQc" margin="true,false,false,false" spacing="true">
+                        <groupTable width="100%" height="100%" dataContainer="deviceQcDc">
+                            <columns>
+                                <column id="qcRecordBillItem"/>
+                                <column id="qcItemNo"/>
+                                <column id="qcArgsNo"/>
+                                <column id="keyMaterialNo"/>
+                                <column id="actualMaterialNo"/>
+                                <column id="qcDeviceNo"/>
+                                <column id="actualDeviceNo"/>
+                                <column id="normValue"/>
+                                <column id="upValue"/>
+                                <column id="downValue"/>
+                                <column id="actualValue"/>
+                                <column id="unit"/>
+                                <column id="qcTime"/>
+                                <column id="isControl"/>
+                                <column id="qcResult"/>
+                                <column id="note"/>
+                            </columns>
+                        </groupTable>
+                    </tab>
+                    <tab id="tab_MaterialQc" caption="msg://tab_MaterialQc" margin="true,false,false,false" spacing="true">
+                        <groupTable height="100%" width="100%" dataContainer="materialQcDc">
+                            <columns>
+                                <column id="qcRecordBillItem"/>
+                                <column id="qcItemNo"/>
+                                <column id="qcArgsNo"/>
+                                <column id="keyMaterialNo"/>
+                                <column id="actualMaterialNo"/>
+                                <column id="qcDeviceNo"/>
+                                <column id="actualDeviceNo"/>
+                                <column id="normValue"/>
+                                <column id="upValue"/>
+                                <column id="downValue"/>
+                                <column id="actualValue"/>
+                                <column id="unit"/>
+                                <column id="qcTime"/>
+                                <column id="isControl"/>
+                                <column id="qcResult"/>
+                                <column id="note"/>
+                            </columns>
+                        </groupTable>
+                    </tab>
+                    <tab id="tab_guiseQc" caption="msg://tab_guiseQc" margin="true,false,false,false" spacing="true">
+                        <groupTable height="100%" width="100%" dataContainer="guiseQcDc">
+                            <columns>
+                                <column id="qcRecordBillItem"/>
+                                <column id="qcItemNo"/>
+                                <column id="qcArgsNo"/>
+                                <column id="keyMaterialNo"/>
+                                <column id="actualMaterialNo"/>
+                                <column id="qcDeviceNo"/>
+                                <column id="actualDeviceNo"/>
+                                <column id="normValue"/>
+                                <column id="upValue"/>
+                                <column id="downValue"/>
+                                <column id="actualValue"/>
+                                <column id="unit"/>
+                                <column id="qcTime"/>
+                                <column id="isControl"/>
+                                <column id="qcResult"/>
+                                <column id="note"/>
+                            </columns>
+                        </groupTable>
+                    </tab>
+                    <tab id="tab_all" caption="msg://tab_all" margin="true,false,false,false" spacing="true">
+                        <groupBox id="qcRecordItemBox" caption="msg://com.zk.nlqc.entitys.record/QcRecordBills.qcRecordItem">
+                            <table id="qcRecordItemTable" dataContainer="qcRecordItemDc" width="100%" height="200px">
+                                <actions>
+                                    <action id="create" type="create"/>
+                                    <action id="edit" type="edit"/>
+                                    <action id="remove" type="remove"/>
+                                </actions>
+                                <columns>
+                                    <column id="qcRecordBillItem"/>
+                                    <column id="qcItemNo"/>
+                                    <column id="qcArgsNo"/>
+                                    <column id="keyMaterialNo"/>
+                                    <column id="actualMaterialNo"/>
+                                    <column id="qcDeviceNo"/>
+                                    <column id="actualDeviceNo"/>
+                                    <column id="normValue"/>
+                                    <column id="upValue"/>
+                                    <column id="downValue"/>
+                                    <column id="actualValue"/>
+                                    <column id="unit"/>
+                                    <column id="firstHz"/>
+                                    <column id="initiativeHz"/>
+                                    <column id="lastHz"/>
+                                    <column id="circleHz"/>
+                                    <column id="qcTime"/>
+                                    <column id="isControl"/>
+                                    <column id="qcResult"/>
+                                    <column id="note"/>
+                                </columns>
+                                <buttonsPanel>
+                                    <button action="qcRecordItemTable.create"/>
+                                    <button action="qcRecordItemTable.edit"/>
+                                    <button action="qcRecordItemTable.remove"/>
+                                </buttonsPanel>
+                            </table>
+                        </groupBox>
+                    </tab>
+                </tabSheet>
+            </groupBox>
+            <hbox id="editActions" spacing="true">
+                <button action="windowCommitAndClose"/>
+                <button action="windowClose"/>
+            </hbox>
         </groupBox>
-        <hbox id="editActions" spacing="true">
-            <button action="windowCommitAndClose"/>
-            <button action="windowClose"/>
-        </hbox>
     </layout>
 </window>

@@ -6,10 +6,10 @@
     <data readOnly="true">
         <collection id="qcRecordBillsesDc"
                     class="com.zk.nlqc.entitys.record.QcRecordBills"
-                    view="_local">
+                    view="qcRecordBills-view">
             <loader id="qcRecordBillsesDl">
                 <query>
-                    <![CDATA[select e from nlqc_QcRecordItem e]]>
+                    <![CDATA[select e from nlqc_QcRecordBills e]]>
                 </query>
             </loader>
         </collection>
@@ -32,38 +32,16 @@
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
-                <column id="flowNo"/>
+                <column id="qcRecordBillItem"/>
+                <column id="createTime"/>
                 <column id="carModelNo"/>
                 <column id="qcWorkStationNo"/>
                 <column id="qcWorkStationName"/>
-                <column id="qcType"/>
                 <column id="qcArgsNo"/>
                 <column id="qcArgsType"/>
-                <column id="qcItemNo"/>
-                <column id="qcItemName"/>
-                <column id="keyMaterialNo"/>
-                <column id="keyMaterialName"/>
-                <column id="realityInMaterialNo"/>
-                <column id="keyDeviceNo"/>
-                <column id="keyDeviceName"/>
-                <column id="normValue"/>
-                <column id="upValue"/>
-                <column id="belowValue"/>
-                <column id="realityValue"/>
-                <column id="unit"/>
-                <column id="firstQcFrequency"/>
-                <column id="initiativeQcFrequency"/>
-                <column id="finallyQcFrequency"/>
-                <column id="roundsQcFrequency"/>
-                <column id="isControlItem"/>
-                <column id="qcDevice"/>
-                <column id="qcTime"/>
-                <column id="isQualified"/>
-                <column id="isGobackRepair"/>
-                <column id="refuseReceive"/>
-                <column id="forceReceive"/>
-                <column id="oncePass"/>
-                <column id="ngMessage"/>
+                <column id="qcType"/>
+                <column id="qcUser"/>
+                <column id="qcRresult"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"

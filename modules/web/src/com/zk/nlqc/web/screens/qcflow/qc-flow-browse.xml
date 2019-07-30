@@ -32,10 +32,11 @@
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
+                <column id="qcFlowNo"/>
                 <column id="carModel"/>
                 <column id="qcCourse"/>
                 <column id="workStation"/>
-                <column id="workStation.qctype"/>
+                <column id="isUse"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"
@@ -43,6 +44,8 @@
                 <button id="createBtn" action="qcFlowsTable.create"/>
                 <button id="editBtn" action="qcFlowsTable.edit"/>
                 <button id="removeBtn" action="qcFlowsTable.remove"/>
+                <button id="isUseButton" invoke="isUseButtonAction" caption="&#21551;&#29992;" enable="false"
+                        icon="CHAIN"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

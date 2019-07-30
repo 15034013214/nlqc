@@ -15,6 +15,9 @@ import javax.persistence.*;
 public class Frequency extends StandardEntity {
     private static final long serialVersionUID = 5331657026245938034L;
 
+    @Column(name = "FREQUENCY_NO")
+    protected String frequencyNo;
+
     @Column(name = "QUANTITY")
     protected Integer quantity;
 
@@ -32,6 +35,14 @@ public class Frequency extends StandardEntity {
 
     @Column(name = "NOTE")
     protected String note;
+
+    public String getFrequencyNo() {
+        return frequencyNo;
+    }
+
+    public void setFrequencyNo(String frequencyNo) {
+        this.frequencyNo = frequencyNo;
+    }
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;

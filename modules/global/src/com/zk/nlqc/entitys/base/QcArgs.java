@@ -8,6 +8,7 @@ import com.zk.nlqc.entitys.complex.WorkStation;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @NamePattern("%s %s|qcArgsCode,qcArgsType")
 @Table(name = "NLQC_QC_ARGS")
@@ -27,12 +28,21 @@ public class QcArgs extends StandardEntity {
     @Column(name = "QC_ARGS_NOTE")
     protected String qcArgsNote;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "WORK_STATION_ID")
-    protected WorkStation workStation;
-
     @Column(name = "NOTE")
     protected String note;
+    @JoinTable(name = "NLQC_WORK_STATION_QC_ARGS_LINK",
+            joinColumns = @JoinColumn(name = "QC_ARGS_ID"),
+            inverseJoinColumns = @JoinColumn(name = "WORK_STATION_ID"))
+    @ManyToMany
+    protected List<WorkStation> workStations;
+
+    public List<WorkStation> getWorkStations() {
+        return workStations;
+    }
+
+    public void setWorkStations(List<WorkStation> workStations) {
+        this.workStations = workStations;
+    }
 
     public String getNote() {
         return note;
@@ -40,14 +50,6 @@ public class QcArgs extends StandardEntity {
 
     public void setNote(String note) {
         this.note = note;
-    }
-
-    public WorkStation getWorkStation() {
-        return workStation;
-    }
-
-    public void setWorkStation(WorkStation workStation) {
-        this.workStation = workStation;
     }
 
     public String getQcArgsNote() {

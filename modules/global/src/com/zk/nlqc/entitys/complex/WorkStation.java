@@ -5,6 +5,7 @@ import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.OnDelete;
 import com.haulmont.cuba.core.entity.annotation.OnDeleteInverse;
 import com.haulmont.cuba.core.global.DeletePolicy;
+import com.zk.nlqc.entitys.base.Device;
 import com.zk.nlqc.entitys.base.QcArgs;
 import com.zk.nlqc.enums.QcTypeEnum;
 
@@ -29,17 +30,39 @@ public class WorkStation extends StandardEntity {
     @Column(name = "QCTYPE", nullable = false)
     protected String qctype;
 
+    @JoinTable(name = "NLQC_WORK_STATION_QC_ARGS_LINK", joinColumns = @JoinColumn(name = "WORK_STATION_ID"), inverseJoinColumns = @JoinColumn(name = "QC_ARGS_ID"))
+    @ManyToMany
     @OnDeleteInverse(DeletePolicy.DENY)
     @OnDelete(DeletePolicy.UNLINK)
-    @OneToMany(mappedBy = "workStation")
     protected List<QcArgs> qcArgs;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "QC_COURSE_ID")
-    protected QcCourse qcCourse;
+    @JoinTable(name = "NLQC_WORK_STATION_DEVICE_LINK", joinColumns = @JoinColumn(name = "WORK_STATION_ID"), inverseJoinColumns = @JoinColumn(name = "DEVICE_ID"))
+    @ManyToMany
+    protected List<Device> device;
 
     @Column(name = "NOTE")
     protected String note;
+    @JoinTable(name = "NLQC_QC_COURSE_WORK_STATION_LINK",
+            joinColumns = @JoinColumn(name = "WORK_STATION_ID"),
+            inverseJoinColumns = @JoinColumn(name = "QC_COURSE_ID"))
+    @ManyToMany
+    protected List<QcCourse> qcCourses;
+
+    public List<QcCourse> getQcCourses() {
+        return qcCourses;
+    }
+
+    public void setQcCourses(List<QcCourse> qcCourses) {
+        this.qcCourses = qcCourses;
+    }
+
+    public List<Device> getDevice() {
+        return device;
+    }
+
+    public void setDevice(List<Device> device) {
+        this.device = device;
+    }
 
     public String getNote() {
         return note;
@@ -47,14 +70,6 @@ public class WorkStation extends StandardEntity {
 
     public void setNote(String note) {
         this.note = note;
-    }
-
-    public QcCourse getQcCourse() {
-        return qcCourse;
-    }
-
-    public void setQcCourse(QcCourse qcCourse) {
-        this.qcCourse = qcCourse;
     }
 
     public List<QcArgs> getQcArgs() {

@@ -11,9 +11,7 @@
         </instance>
         <collection id="qcArgsesDc" class="com.zk.nlqc.entitys.base.QcArgs" view="_minimal">
             <loader id="qcArgsesLc">
-                <query>
-                    <![CDATA[select e from nlqc_QcArgs e]]>
-                </query>
+                <query><![CDATA[select e from nlqc_QcArgs e where e in :qcAllArgs and e.qcArgsType <> :qcType]]></query>
             </loader>
         </collection>
         <collection id="devicesDc" class="com.zk.nlqc.entitys.base.Device" view="_minimal">
@@ -71,8 +69,6 @@
                             <textField id="qcItemNameField" property="qcItemName"/>
                             <lookupPickerField id="qcArgsField" optionsContainer="qcArgsesDc" property="qcArgs">
                                 <actions>
-                                    <action id="lookup" type="picker_lookup"/>
-                                    <action id="open" type="picker_open"/>
                                     <action id="clear" type="picker_clear"/>
                                 </actions>
                             </lookupPickerField>
@@ -92,11 +88,8 @@
                             </lookupPickerField>
                             <textField id="unitField" property="unit"/>
                             <textField id="normValueField" property="normValue"/>
-                            <textField id="upValueField" property="upValue"/>
-                            <textField id="belowValueField" property="belowValue"/>
                         </column>
                         <column width="250px">
-                            <checkBox id="isFirstQcField" property="isFirstQc"/>
                             <lookupPickerField id="firstQcFrequencyField" optionsContainer="firstQcFrequenciesDc"
                                                property="firstQcFrequency">
                                 <actions>
@@ -105,7 +98,6 @@
                                     <action id="clear" type="picker_clear"/>
                                 </actions>
                             </lookupPickerField>
-                            <checkBox id="isInitiativeQcField" property="isInitiativeQc"/>
                             <lookupPickerField id="initiativeQcFrequencyField" optionsContainer="initiativeQcFrequenciesDc"
                                                property="initiativeQcFrequency">
                                 <actions>
@@ -114,7 +106,6 @@
                                     <action id="clear" type="picker_clear"/>
                                 </actions>
                             </lookupPickerField>
-                            <checkBox id="isFinallyQcField" property="isFinallyQc"/>
                             <lookupPickerField id="finallyQcFrequencyField" optionsContainer="finallyQcFrequenciesDc"
                                                property="finallyQcFrequency">
                                 <actions>
@@ -123,7 +114,6 @@
                                     <action id="clear" type="picker_clear"/>
                                 </actions>
                             </lookupPickerField>
-                            <checkBox id="isRoundsQcField" property="isRoundsQc"/>
                             <lookupPickerField id="roundsQcFrequencyField" optionsContainer="roundsQcFrequenciesDc"
                                                property="roundsQcFrequency">
                                 <actions>
@@ -133,7 +123,9 @@
                                 </actions>
                             </lookupPickerField>
                             <checkBox id="isControlItemField" property="isControlItem"/>
-        <!--                    <textField id="pictureField" property="picture"/>-->
+                            <textField id="upValueField" property="upValue"/>
+                            <textField id="belowValueField" property="belowValue"/>
+                            <!--                    <textField id="pictureField" property="picture"/>-->
                         </column>
                     </form>
                 </scrollBox>
