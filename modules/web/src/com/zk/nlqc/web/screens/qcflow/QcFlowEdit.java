@@ -36,6 +36,8 @@ public class QcFlowEdit extends StandardEditor<QcFlow> {
     @Inject
     private Button createButton;
     @Inject
+    private Button qcItemsEditButton;
+    @Inject
     private GroupTable<QcItem> qcFlowQcItemTable;
     @Inject
     private LookupPickerField<QcCourse> qcCourseField;
@@ -130,7 +132,10 @@ public class QcFlowEdit extends StandardEditor<QcFlow> {
         }
     }
 
-    public void setParameterInvoke() {
+    /**
+     * 按钮打开创建页面
+     */
+    public void setCreatePageWithParameterInvoke() {
         // 可以选择的质检参数列表
         List<QcArgs> qcArgs = workStationField.getValue().getQcArgs();
         QcParam qcParam = new QcParam(qcArgs);
@@ -142,4 +147,33 @@ public class QcFlowEdit extends StandardEditor<QcFlow> {
                 .build()
                 .show();
     }
+
+    /**
+     * 按钮打开编辑页面
+     */
+    public void setEditPageWithParameterInvoke(){
+        QcItem qcItem = qcFlowQcItemTable.getSingleSelected();
+        List<QcArgs> qcArgs = workStationField.getValue().getQcArgs();
+        QcParam qcParam = new QcParam(qcArgs);
+        screenBuilders.editor(qcFlowQcItemTable)
+                .editEntity(qcItem)
+                .withScreenClass(QcItemEdit.class)
+                .withLaunchMode(OpenMode.THIS_TAB)
+                .withOptions(qcParam)//封装后的参数
+                .build()
+                .show();
+    }
+
+    @Subscribe("qcFlowQcItemTable")
+    private void onQcFlowQcItemTableSelection(Table.SelectionEvent<QcItem> event) {
+        if(qcFlowQcItemTable.getSingleSelected() != null){
+            qcItemsEditButton.setEnabled(true);
+        }else {
+            qcItemsEditButton.setEnabled(false);
+        }
+    }
+
+    
+
+    
 }

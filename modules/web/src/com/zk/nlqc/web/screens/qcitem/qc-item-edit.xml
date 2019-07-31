@@ -11,7 +11,8 @@
         </instance>
         <collection id="qcArgsesDc" class="com.zk.nlqc.entitys.base.QcArgs" view="_minimal">
             <loader id="qcArgsesLc">
-                <query><![CDATA[select e from nlqc_QcArgs e where e in :qcAllArgs and e.qcArgsType <> :qcType]]></query>
+<!--                <query><![CDATA[select e from nlqc_QcArgs e where e in :qcAllArgs and e.qcArgsType <> :qcType]]></query>-->
+                <query><![CDATA[select e from nlqc_QcArgs e ]]></query>
             </loader>
         </collection>
         <collection id="devicesDc" class="com.zk.nlqc.entitys.base.Device" view="_minimal">

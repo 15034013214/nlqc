@@ -93,9 +93,10 @@
                         <action id="remove" type="remove"/>
                     </actions>
                     <buttonsPanel>
-                        <button id="createButton" invoke="setParameterInvoke" caption="msg://create"
+                        <button id="createButton" invoke="setCreatePageWithParameterInvoke" caption="msg://create"
                                 icon="CREATE_ACTION"/>
-                        <button action="qcFlowQcItemTable.edit"/>
+                        <button id="qcItemsEditButton" invoke="setEditPageWithParameterInvoke"
+                                caption="msg://edit" icon="EDIT" enable="false"/>
                         <button action="qcFlowQcItemTable.remove"/>
                     </buttonsPanel>
                 </groupTable>

@@ -1,5 +1,6 @@
 package com.zk.nlqc.web.screens.qcitem;
 
+import com.haulmont.cuba.core.global.EntityStates;
 import com.haulmont.cuba.gui.components.HasValue;
 import com.haulmont.cuba.gui.components.LookupPickerField;
 import com.haulmont.cuba.gui.components.SplitPanel;
@@ -49,6 +50,7 @@ public class QcItemEdit extends StandardEditor<QcItem> {
         ScreenOptions options = event.getOptions();
         if (options instanceof QcParam) {
             List<QcArgs> args = ((QcParam) options).getQcArgs();
+            qcArgsesLc.setQuery("select e from nlqc_QcArgs e where e in :qcAllArgs and e.qcArgsType <> :qcType");
             qcArgsesLc.setParameter("qcAllArgs" , args);
             qcArgsesLc.setParameter("qcType" , "设备检测");
             qcArgsesLc.load();
@@ -111,6 +113,4 @@ public class QcItemEdit extends StandardEditor<QcItem> {
         upValueField.setEditable(false);
         unitField.setEditable(false);
     }
-
-
 }

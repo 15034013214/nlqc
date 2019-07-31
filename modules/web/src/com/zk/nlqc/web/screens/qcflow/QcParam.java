@@ -2,6 +2,7 @@ package com.zk.nlqc.web.screens.qcflow;
 
 import com.haulmont.cuba.gui.screen.ScreenOptions;
 import com.zk.nlqc.entitys.base.QcArgs;
+import com.zk.nlqc.entitys.complex.QcItem;
 
 import java.util.List;
 
