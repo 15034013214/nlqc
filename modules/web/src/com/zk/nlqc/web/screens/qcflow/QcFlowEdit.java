@@ -1,10 +1,7 @@
 package com.zk.nlqc.web.screens.qcflow;
 
 import com.haulmont.cuba.gui.ScreenBuilders;
-import com.haulmont.cuba.gui.actions.list.CreateAction;
-import com.haulmont.cuba.gui.actions.list.RemoveAction;
 import com.haulmont.cuba.gui.components.*;
-import com.haulmont.cuba.gui.components.actions.BaseAction;
 import com.haulmont.cuba.gui.model.CollectionContainer;
 import com.haulmont.cuba.gui.model.CollectionLoader;
 import com.haulmont.cuba.gui.model.CollectionPropertyContainer;
@@ -18,7 +15,6 @@ import com.zk.nlqc.entitys.complex.WorkStation;
 import com.zk.nlqc.web.screens.qcitem.QcItemEdit;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 import java.util.ArrayList;
 import java.util.List;
 
