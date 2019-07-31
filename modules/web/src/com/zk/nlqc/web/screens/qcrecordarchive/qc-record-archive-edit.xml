@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.zk.nlqc.web.screens.qcrecordarchive">
+    <data>
+        <instance id="qcRecordArchiveDc"
+                  class="com.zk.nlqc.entitys.recordArchive.QcRecordArchive"
+                  view="_local">
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="groupBox" spacing="true">
+        <groupBox id="groupBox" expand="scrollBox">
+            <scrollBox spacing="true" height="100%">
+                <form id="form" dataContainer="qcRecordArchiveDc">
+                    <column width="250px">
+                        <textField id="qcRecordBillItemField" property="qcRecordBillItem"/>
+                        <dateField id="createTimeField" property="createTime"/>
+                        <textField id="carModelNoField" property="carModelNo"/>
+                        <textField id="qcWorkStationNoField" property="qcWorkStationNo"/>
+                        <textField id="qcWorkStationNameField" property="qcWorkStationName"/>
+                        <textField id="qcArgsNoField" property="qcArgsNo"/>
+                        <textField id="qcArgsTypeField" property="qcArgsType"/>
+                    </column>
+                    <column width="250px">
+                        <textField id="qcTypeField" property="qcType"/>
+                        <textField id="qcUserField" property="qcUser"/>
+                        <textField id="keyMaterialNoField" property="keyMaterialNo"/>
+                        <textField id="actualMaterialNoField" property="actualMaterialNo"/>
+                        <textField id="qcDeviceNoField" property="qcDeviceNo"/>
+                        <textField id="actualDeviceNoField" property="actualDeviceNo"/>
+                        <textField id="normValueField" property="normValue"/>
+                    </column>
+                    <column width="250px">
+                        <textField id="upValueField" property="upValue"/>
+                        <textField id="downValueField" property="downValue"/>
+                        <textField id="actualValueField" property="actualValue"/>
+                        <textField id="unitField" property="unit"/>
+                        <textField id="firstHzField" property="firstHz"/>
+                        <textField id="initiativeHzField" property="initiativeHz"/>
+                    </column>
+                    <column width="250px">
+                        <textField id="circleHzField" property="circleHz"/>
+                        <textField id="qcTimeField" property="qcTime"/>
+                        <checkBox id="isControlField" property="isControl"/>
+                        <textField id="qcResultField" property="qcResult"/>
+                        <textField id="itemNoteField" property="itemNote"/>
+                        <textField id="lastHzField" property="lastHz"/>
+                    </column>
+                </form>
+            </scrollBox>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

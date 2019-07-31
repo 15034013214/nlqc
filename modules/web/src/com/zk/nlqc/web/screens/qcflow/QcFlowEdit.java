@@ -1,5 +1,6 @@
 package com.zk.nlqc.web.screens.qcflow;
 
+import com.haulmont.cuba.core.global.EntityStates;
 import com.haulmont.cuba.gui.ScreenBuilders;
 import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.model.CollectionContainer;
@@ -12,6 +13,7 @@ import com.zk.nlqc.entitys.complex.QcCourse;
 import com.zk.nlqc.entitys.complex.QcFlow;
 import com.zk.nlqc.entitys.complex.QcItem;
 import com.zk.nlqc.entitys.complex.WorkStation;
+import com.zk.nlqc.service.ToolsService;
 import com.zk.nlqc.web.screens.qcitem.QcItemEdit;
 
 import javax.inject.Inject;
@@ -39,8 +41,15 @@ public class QcFlowEdit extends StandardEditor<QcFlow> {
     private LookupPickerField<QcCourse> qcCourseField;
     @Inject
     private ScreenBuilders screenBuilders;
+    @Inject
+    private TextField<String> qcFlowNoField;
+    @Inject
+    private ToolsService toolsService;
+    @Inject
+    private EntityStates entityStates;
 
     /**
+     * 质检途程字段监听：根据改变的值设置工作站的数据源
      * 工站是根据的条件是该质检途程中含有该工作。
      */
     @Subscribe("qcCourseField")
@@ -55,11 +64,32 @@ public class QcFlowEdit extends StandardEditor<QcFlow> {
         workStationsLc.load();
     }
 
+    /**
+     *  1：如果时新建页面，填充编号。
+     * @param event
+     */
+    @Subscribe
+    private void onBeforeShow(BeforeShowEvent event) {
+        qcFlowNoField.setEditable(false);
+        if(entityStates.isNew(getEditedEntity())){
+            qcFlowNoField.setValue(toolsService.getNumberByClassAndDate("QcFlow" , "NLQC_QC_FLOW" , "yyMM" ,5 , false));
+        }
+    }
+
+    /**
+     * 页面显示后
+     *  1：如果工位没有填写，那么质检项不能添加。
+     * @param event
+     */
     @Subscribe
     private void onAfterShow(AfterShowEvent event) {
         setQcItemEnable();
     }
 
+    /**
+     * 如果工位没有填写，那么质检项不能添加。
+     * @param event
+     */
     @Subscribe("workStationField")
     private void onWorkStationFieldValueChange(HasValue.ValueChangeEvent<WorkStation> event) {
         setQcItemEnable();

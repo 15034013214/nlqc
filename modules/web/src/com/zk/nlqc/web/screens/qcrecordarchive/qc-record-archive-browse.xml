@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://browseCaption"
+        focusComponent="qcRecordArchivesTable"
+        messagesPack="com.zk.nlqc.web.screens.qcrecordarchive">
+    <data readOnly="true">
+        <collection id="qcRecordArchivesDc"
+                    class="com.zk.nlqc.entitys.recordArchive.QcRecordArchive"
+                    view="_local">
+            <loader id="qcRecordArchivesDl">
+                <query>
+                    <![CDATA[select e from nlqc_QcRecordArchive e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="qcRecordArchivesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="qcRecordArchivesTable"
+                dataLoader="qcRecordArchivesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="qcRecordArchivesTable"
+                    width="100%"
+                    dataContainer="qcRecordArchivesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+                <action id="excel" type="excel"/>
+            </actions>
+            <columns>
+                <column id="qcRecordBillItem"/>
+                <column id="createTime"/>
+                <column id="carModelNo"/>
+                <column id="qcWorkStationNo"/>
+                <column id="qcWorkStationName"/>
+                <column id="qcArgsNo"/>
+                <column id="qcArgsType"/>
+                <column id="qcType"/>
+                <column id="qcUser"/>
+                <column id="keyMaterialNo"/>
+                <column id="actualMaterialNo"/>
+                <column id="qcDeviceNo"/>
+                <column id="actualDeviceNo"/>
+                <column id="normValue"/>
+                <column id="upValue"/>
+                <column id="downValue"/>
+                <column id="actualValue"/>
+                <column id="unit"/>
+                <column id="firstHz"/>
+                <column id="initiativeHz"/>
+                <column id="lastHz"/>
+                <column id="circleHz"/>
+                <column id="qcTime"/>
+                <column id="isControl"/>
+                <column id="qcResult"/>
+                <column id="itemNote"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="qcRecordArchivesTable.create"/>
+                <button id="editBtn" action="qcRecordArchivesTable.edit"/>
+                <button id="removeBtn" action="qcRecordArchivesTable.remove"/>
+                <button id="excelBtn" action="qcRecordArchivesTable.excel"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

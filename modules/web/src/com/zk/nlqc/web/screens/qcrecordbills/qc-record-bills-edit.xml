@@ -144,42 +144,40 @@
                         </groupTable>
                     </tab>
                     <tab id="tab_all" caption="msg://tab_all" margin="true,false,false,false" spacing="true">
-                        <groupBox id="qcRecordItemBox" caption="msg://com.zk.nlqc.entitys.record/QcRecordBills.qcRecordItem">
-                            <table id="qcRecordItemTable" dataContainer="qcRecordItemDc" width="100%" height="200px">
-                                <actions>
-                                    <action id="create" type="create"/>
-                                    <action id="edit" type="edit"/>
-                                    <action id="remove" type="remove"/>
-                                </actions>
-                                <columns>
-                                    <column id="qcRecordBillItem"/>
-                                    <column id="qcItemNo"/>
-                                    <column id="qcArgsNo"/>
-                                    <column id="keyMaterialNo"/>
-                                    <column id="actualMaterialNo"/>
-                                    <column id="qcDeviceNo"/>
-                                    <column id="actualDeviceNo"/>
-                                    <column id="normValue"/>
-                                    <column id="upValue"/>
-                                    <column id="downValue"/>
-                                    <column id="actualValue"/>
-                                    <column id="unit"/>
-                                    <column id="firstHz"/>
-                                    <column id="initiativeHz"/>
-                                    <column id="lastHz"/>
-                                    <column id="circleHz"/>
-                                    <column id="qcTime"/>
-                                    <column id="isControl"/>
-                                    <column id="qcResult"/>
-                                    <column id="note"/>
-                                </columns>
-                                <buttonsPanel>
-                                    <button action="qcRecordItemTable.create"/>
-                                    <button action="qcRecordItemTable.edit"/>
-                                    <button action="qcRecordItemTable.remove"/>
-                                </buttonsPanel>
-                            </table>
-                        </groupBox>
+                        <table id="qcRecordItemTable" dataContainer="qcRecordItemDc" width="100%" height="200px">
+                            <actions>
+                                <action id="create" type="create"/>
+                                <action id="edit" type="edit"/>
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="qcRecordBillItem"/>
+                                <column id="qcItemNo"/>
+                                <column id="qcArgsNo"/>
+                                <column id="keyMaterialNo"/>
+                                <column id="actualMaterialNo"/>
+                                <column id="qcDeviceNo"/>
+                                <column id="actualDeviceNo"/>
+                                <column id="normValue"/>
+                                <column id="upValue"/>
+                                <column id="downValue"/>
+                                <column id="actualValue"/>
+                                <column id="unit"/>
+                                <column id="firstHz"/>
+                                <column id="initiativeHz"/>
+                                <column id="lastHz"/>
+                                <column id="circleHz"/>
+                                <column id="qcTime"/>
+                                <column id="isControl"/>
+                                <column id="qcResult"/>
+                                <column id="note"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="qcRecordItemTable.create"/>
+                                <button action="qcRecordItemTable.edit"/>
+                                <button action="qcRecordItemTable.remove"/>
+                            </buttonsPanel>
+                        </table>
                     </tab>
                 </tabSheet>
             </groupBox>

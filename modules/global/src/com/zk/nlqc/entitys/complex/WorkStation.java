@@ -23,7 +23,8 @@ public class WorkStation extends StandardEntity {
     @Column(name = "WORK_STATION_NO", nullable = false)
     protected String workStationNo;
 
-    @Column(name = "WORK_STATION")
+    @NotNull
+    @Column(name = "WORK_STATION", nullable = false)
     protected String workStation;
 
     @NotNull
@@ -42,6 +43,7 @@ public class WorkStation extends StandardEntity {
 
     @Column(name = "NOTE")
     protected String note;
+
     @JoinTable(name = "NLQC_QC_COURSE_WORK_STATION_LINK",
             joinColumns = @JoinColumn(name = "WORK_STATION_ID"),
             inverseJoinColumns = @JoinColumn(name = "QC_COURSE_ID"))

@@ -40,11 +40,6 @@ public class QcRecordBills extends StandardEntity {
     @Column(name = "QC_TYPE")
     protected String qcType;
 
-    @Composition
-    @OnDelete(DeletePolicy.CASCADE)
-    @OneToMany(mappedBy = "qcRecordBills")
-    protected List<QcRecordBillsItem> qcRecordItem;
-
     @Column(name = "QC_USER")
     protected String qcUser;
 
@@ -53,6 +48,11 @@ public class QcRecordBills extends StandardEntity {
 
     @Column(name = "NOTE")
     protected String note;
+
+    @Composition
+    @OnDelete(DeletePolicy.CASCADE)
+    @OneToMany(mappedBy = "qcRecordBills")
+    protected List<QcRecordBillsItem> qcRecordItem;
 
     public String getNote() {
         return note;

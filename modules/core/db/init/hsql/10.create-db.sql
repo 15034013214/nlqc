@@ -10,7 +10,7 @@ create table NLQC_WORK_STATION (
     DELETED_BY varchar(50),
     --
     WORK_STATION_NO varchar(255) not null,
-    WORK_STATION varchar(255),
+    WORK_STATION varchar(255) not null,
     QCTYPE varchar(50) not null,
     NOTE varchar(255),
     --
@@ -105,7 +105,7 @@ create table NLQC_FREQUENCY (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    FREQUENCY_NO varchar(255),
+    FREQUENCY_NO varchar(255) not null,
     QUANTITY integer,
     UNIT_ID varchar(36),
     IS_INFINITY_BIG boolean,
@@ -179,10 +179,10 @@ create table NLQC_QC_FLOW (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    QC_FLOW_NO varchar(255),
-    CAR_MODEL_ID varchar(36),
-    QC_COURSE_ID varchar(36),
-    WORK_STATION_ID varchar(36),
+    QC_FLOW_NO varchar(255) not null,
+    CAR_MODEL_ID varchar(36) not null,
+    QC_COURSE_ID varchar(36) not null,
+    WORK_STATION_ID varchar(36) not null,
     IS_USE boolean,
     --
     primary key (ID)
@@ -310,3 +310,44 @@ create table NLQC_QC_RECORD_BILLS (
     primary key (ID)
 )^
 -- end NLQC_QC_RECORD_BILLS
+-- begin NLQC_QC_RECORD_ARCHIVE
+create table NLQC_QC_RECORD_ARCHIVE (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    QC_RECORD_BILL_ITEM varchar(255),
+    CREATE_TIME timestamp,
+    CAR_MODEL_NO varchar(255),
+    QC_WORK_STATION_NO varchar(255),
+    QC_WORK_STATION_NAME varchar(255),
+    QC_ARGS_NO varchar(255),
+    QC_ARGS_TYPE varchar(255),
+    QC_TYPE varchar(255),
+    QC_USER varchar(255),
+    KEY_MATERIAL_NO varchar(255),
+    ACTUAL_MATERIAL_NO varchar(255),
+    QC_DEVICE_NO varchar(255),
+    ACTUAL_DEVICE_NO varchar(255),
+    NORM_VALUE bigint,
+    UP_VALUE bigint,
+    DOWN_VALUE bigint,
+    ACTUAL_VALUE bigint,
+    UNIT varchar(255),
+    FIRST_HZ varchar(255),
+    INITIATIVE_HZ varchar(255),
+    LAST_HZ varchar(255),
+    CIRCLE_HZ varchar(255),
+    QC_TIME varchar(255),
+    IS_CONTROL boolean,
+    QC_RESULT varchar(255),
+    ITEM_NOTE varchar(255),
+    --
+    primary key (ID)
+)^
+-- end NLQC_QC_RECORD_ARCHIVE

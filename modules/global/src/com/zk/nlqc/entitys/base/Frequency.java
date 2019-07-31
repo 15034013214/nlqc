@@ -8,6 +8,7 @@ import com.haulmont.cuba.core.entity.annotation.OnDeleteInverse;
 import com.haulmont.cuba.core.global.DeletePolicy;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @NamePattern("%s|showText")
 @Table(name = "NLQC_FREQUENCY")
@@ -15,7 +16,8 @@ import javax.persistence.*;
 public class Frequency extends StandardEntity {
     private static final long serialVersionUID = 5331657026245938034L;
 
-    @Column(name = "FREQUENCY_NO")
+    @NotNull
+    @Column(name = "FREQUENCY_NO", nullable = false)
     protected String frequencyNo;
 
     @Column(name = "QUANTITY")

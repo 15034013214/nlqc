@@ -11,6 +11,7 @@ import com.haulmont.cuba.core.global.DeletePolicy;
 import com.zk.nlqc.entitys.base.CarModel;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @NamePattern("%s|qcFlowNo")
@@ -19,21 +20,25 @@ import java.util.List;
 public class QcFlow extends StandardEntity {
     private static final long serialVersionUID = -3704377907276222730L;
 
-    @Column(name = "QC_FLOW_NO")
+    @NotNull
+    @Column(name = "QC_FLOW_NO", nullable = false)
     protected String qcFlowNo;
 
+    @NotNull
     @Lookup(type = LookupType.DROPDOWN, actions = {"lookup", "open", "clear"})
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "CAR_MODEL_ID")
     protected CarModel carModel;
 
+    @NotNull
     @Lookup(type = LookupType.DROPDOWN, actions = {"lookup", "open", "clear"})
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "QC_COURSE_ID")
     protected QcCourse qcCourse;
 
+    @NotNull
     @Lookup(type = LookupType.DROPDOWN, actions = {"lookup", "open", "clear"})
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "WORK_STATION_ID")
     protected WorkStation workStation;
 

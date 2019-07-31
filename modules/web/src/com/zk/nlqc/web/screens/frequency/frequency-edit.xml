@@ -24,10 +24,10 @@
             <column width="300px">
                 <textField id="frequencyNoField" property="frequencyNo"/>
                 <textField id="quantityField" property="quantity"/>
-                <checkBox id="isInfinityBigField" property="isInfinityBig"/>
+                <textField id="showTextField" property="showText"/>
             </column>
             <column width="300px">
-                <textField id="showTextField" property="showText"/>
+                <checkBox id="isInfinityBigField" property="isInfinityBig"/>
                 <lookupPickerField id="unitField" optionsContainer="unitForFrequenciesDc"
                                    property="unit">
                     <actions>

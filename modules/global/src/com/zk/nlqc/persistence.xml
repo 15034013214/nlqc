@@ -15,5 +15,6 @@
         <class>com.zk.nlqc.entitys.record.FinalRecord</class>
         <class>com.zk.nlqc.entitys.base.UnitForFrequency</class>
         <class>com.zk.nlqc.entitys.record.QcRecordBillsItem</class>
+        <class>com.zk.nlqc.entitys.recordArchive.QcRecordArchive</class>
     </persistence-unit>
 </persistence>

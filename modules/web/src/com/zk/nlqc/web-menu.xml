@@ -20,5 +20,6 @@
         <item screen="nlqc_FinalRecord.browse"/>
     </menu>
     <menu id="statistics" icon="BAR_CHART">
+        <item screen="nlqc_QcRecordArchive.browse"/>
     </menu>
 </menu-config>
