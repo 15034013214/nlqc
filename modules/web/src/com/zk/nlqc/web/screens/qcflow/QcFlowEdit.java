@@ -138,7 +138,7 @@ public class QcFlowEdit extends StandardEditor<QcFlow> {
     public void setCreatePageWithParameterInvoke() {
         // 可以选择的质检参数列表
         List<QcArgs> qcArgs = workStationField.getValue().getQcArgs();
-        QcParam qcParam = new QcParam(qcArgs);
+        QcParam qcParam = new QcParam(getNextQcItemNo() , qcArgs);
         screenBuilders.editor(qcFlowQcItemTable)
                 .newEntity()
                 .withScreenClass(QcItemEdit.class)
@@ -154,7 +154,7 @@ public class QcFlowEdit extends StandardEditor<QcFlow> {
     public void setEditPageWithParameterInvoke(){
         QcItem qcItem = qcFlowQcItemTable.getSingleSelected();
         List<QcArgs> qcArgs = workStationField.getValue().getQcArgs();
-        QcParam qcParam = new QcParam(qcArgs);
+        QcParam qcParam = new QcParam(getNextQcItemNo() , qcArgs);
         screenBuilders.editor(qcFlowQcItemTable)
                 .editEntity(qcItem)
                 .withScreenClass(QcItemEdit.class)
@@ -173,7 +173,24 @@ public class QcFlowEdit extends StandardEditor<QcFlow> {
         }
     }
 
-    
-
-    
+    /**
+     * 计算下一个质检项目编号
+     * @return
+     */
+    private String getNextQcItemNo(){
+        List<QcItem> qcItems = qcFlowQcItemsDc.getItems();
+        if(qcItems.size() != 0){
+            String maxNo = "";
+            for (int index = 0; index < qcItems.size(); index++) {
+                String no = qcItems.get(index).getQcItemNo();
+                if(no.compareTo(maxNo) > 0){
+                    maxNo = no;
+                }
+            }
+            int nextIntNo = Integer.parseInt(maxNo.substring(maxNo.indexOf("-I") + 2 , maxNo.length())) + 1;
+            return qcFlowNoField.getValue() + "-I" + nextIntNo;
+        }else {
+            return qcFlowNoField.getValue() + "-I1";
+        }
+    }
 }

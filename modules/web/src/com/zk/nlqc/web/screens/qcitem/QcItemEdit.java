@@ -3,17 +3,16 @@ package com.zk.nlqc.web.screens.qcitem;
 import com.haulmont.cuba.core.global.EntityStates;
 import com.haulmont.cuba.gui.components.HasValue;
 import com.haulmont.cuba.gui.components.LookupPickerField;
-import com.haulmont.cuba.gui.components.SplitPanel;
 import com.haulmont.cuba.gui.components.TextField;
 import com.haulmont.cuba.gui.model.CollectionLoader;
 import com.haulmont.cuba.gui.screen.*;
-import com.haulmont.cuba.web.theme.HaloTheme;
 import com.zk.nlqc.entitys.base.Device;
 import com.zk.nlqc.entitys.base.Material;
 import com.zk.nlqc.entitys.base.QcArgs;
 import com.zk.nlqc.entitys.complex.QcItem;
-import com.zk.nlqc.enums.QcTypeEnum;
+import com.zk.nlqc.service.ToolsService;
 import com.zk.nlqc.web.screens.qcflow.QcParam;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.inject.Inject;
 import java.math.BigDecimal;
@@ -40,7 +39,13 @@ public class QcItemEdit extends StandardEditor<QcItem> {
     private TextField<BigDecimal> upValueField;
     @Inject
     private TextField<String> unitField;
+    @Inject
+    private EntityStates entityStates;
+    @Inject
+    private TextField<String> qcItemNoField;
 
+    // 为创建界面分配的编号
+    private String qcQcItemNo;
     /**
      * 初始化的时候获取到参数，然后更新DL
      * @param event
@@ -50,11 +55,26 @@ public class QcItemEdit extends StandardEditor<QcItem> {
         ScreenOptions options = event.getOptions();
         if (options instanceof QcParam) {
             List<QcArgs> args = ((QcParam) options).getQcArgs();
+            qcQcItemNo = ((QcParam) options).getQcItemNo();
             qcArgsesLc.setQuery("select e from nlqc_QcArgs e where e in :qcAllArgs and e.qcArgsType <> :qcType");
             qcArgsesLc.setParameter("qcAllArgs" , args);
             qcArgsesLc.setParameter("qcType" , "设备检测");
             qcArgsesLc.load();
         }
+    }
+
+    /**
+     * 填写编号
+     * @param event
+     */
+    @Subscribe
+    private void onBeforeShow(BeforeShowEvent event) {
+        if(entityStates.isNew(getEditedEntity())){
+            if(!StringUtils.isEmpty(qcQcItemNo)){
+                qcItemNoField.setValue(qcQcItemNo);
+            }
+        }
+        qcItemNoField.setEditable(false);
     }
 
     @Subscribe("qcArgsField")

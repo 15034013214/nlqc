@@ -1,5 +1,6 @@
 package com.zk.nlqc.web.screens.frequency;
 
+import com.haulmont.cuba.core.global.EntityStates;
 import com.haulmont.cuba.gui.components.CheckBox;
 import com.haulmont.cuba.gui.components.HasValue;
 import com.haulmont.cuba.gui.components.LookupPickerField;
@@ -7,6 +8,7 @@ import com.haulmont.cuba.gui.components.TextField;
 import com.haulmont.cuba.gui.screen.*;
 import com.zk.nlqc.entitys.base.Frequency;
 import com.zk.nlqc.entitys.base.UnitForFrequency;
+import com.zk.nlqc.service.ToolsService;
 
 import javax.inject.Inject;
 
@@ -23,6 +25,20 @@ public class FrequencyEdit extends StandardEditor<Frequency> {
     private CheckBox isInfinityBigField;
     @Inject
     private TextField<String> showTextField;
+    @Inject
+    private TextField<String> frequencyNoField;
+    @Inject
+    private ToolsService toolsService;
+    @Inject
+    private EntityStates entityStates;
+
+    @Subscribe
+    private void onBeforeShow(BeforeShowEvent event) {
+        if(entityStates.isNew(getEditedEntity())){
+            frequencyNoField.setValue(toolsService.getNumberByClassAndDate("Frequency" , "NLQC_FREQUENCY" , "yyMM" ,3 , false));
+        }
+        frequencyNoField.setEditable(false);
+    }
 
     @Subscribe("quantityField")
     private void onQuantityFieldValueChange(HasValue.ValueChangeEvent<String> event) {

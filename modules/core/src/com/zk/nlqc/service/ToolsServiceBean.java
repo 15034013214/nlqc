@@ -89,6 +89,6 @@ public class ToolsServiceBean implements ToolsService {
             Query query = entityManager.createNativeQuery(sql);
             obj = query.getSingleResult();
         }
-        return new Integer(obj.toString());
+        return new Integer(obj.toString()) + 1;
     }
 }
